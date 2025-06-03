@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/AlunoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/CursoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/DisciplinaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/FuncionarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/InstituicaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/TurmaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AdminEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AdminEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AlunoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AlunoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/CursoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/CursoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/DisciplinaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/DisciplinaEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/FuncionarioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/FuncionarioEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/ProfessorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/ProfessorEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +36,23 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2xtDXhzcrrOLPdBPjgKkQ1RfFA7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="org.instituicao.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.instituicao.App" />

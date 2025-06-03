@@ -16,9 +16,11 @@ public class AlunoEntity extends PessoaEntity {
     private String senhaHash;
     private HashSet<CursoEntity> cursoEntities = new HashSet<>();
     private HashSet<TurmaEntity> turmaEntities = new HashSet<>();
+    private final InstituicaoEntity instituicaoEntity;
 
-    public AlunoEntity(String cpf, String nome, LocalDate dataNascimento, String email) {
+    public AlunoEntity(String cpf, String nome, LocalDate dataNascimento, String email, InstituicaoEntity instituicaoEntity) {
         super(cpf, nome, dataNascimento, email);
+        this.instituicaoEntity = instituicaoEntity;
     }
 
     public int getMatricula() {
@@ -86,6 +88,10 @@ public class AlunoEntity extends PessoaEntity {
             return false;
         }
         return turmaEntities.remove(turmaEntity);
+    }
+
+    public InstituicaoEntity getInstituicaoEntity() {
+        return instituicaoEntity;
     }
 
     @Override

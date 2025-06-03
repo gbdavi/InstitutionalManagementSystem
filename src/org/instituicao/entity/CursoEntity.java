@@ -14,10 +14,12 @@ public class CursoEntity {
     private final int id;
     private String nome;
     private HashSet<DisciplinaEntity> disciplinaEntities = new HashSet<>();
+    private final InstituicaoEntity instituicaoEntity;
 
-    public CursoEntity(String nome) {
+    public CursoEntity(String nome, InstituicaoEntity instituicaoEntity) {
         id = idGenerator.gerarProximoId();
         this.nome = nome;
+        this.instituicaoEntity = instituicaoEntity;
     }
 
     public int getId() {
@@ -42,6 +44,10 @@ public class CursoEntity {
 
     public boolean removerDisciplina(DisciplinaEntity disciplinaEntity) {
         return disciplinaEntities.remove(disciplinaEntity);
+    }
+
+    public InstituicaoEntity getInstituicaoEntity() {
+        return instituicaoEntity;
     }
 
     @Override

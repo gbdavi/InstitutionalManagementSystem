@@ -9,9 +9,11 @@ public class FuncionarioEntity extends PessoaEntity {
     private int matricula;
     private String emailCorporativo;
     private String senhaHash;
+    private final InstituicaoEntity instituicaoEntity;
 
-    public FuncionarioEntity(String cpf, String nome, LocalDate dataNascimento, String email) {
+    public FuncionarioEntity(String cpf, String nome, LocalDate dataNascimento, String email, InstituicaoEntity instituicaoEntity) {
         super(cpf, nome, dataNascimento, email);
+        this.instituicaoEntity = instituicaoEntity;
     }
 
     public int getMatricula() {
@@ -36,6 +38,10 @@ public class FuncionarioEntity extends PessoaEntity {
 
     public void setSenha(String senha) {
         this.senhaHash = SenhaUtils.gerarHashSenha(senha);
+    }
+
+    public InstituicaoEntity getInstituicaoEntity() {
+        return instituicaoEntity;
     }
 
     @Override

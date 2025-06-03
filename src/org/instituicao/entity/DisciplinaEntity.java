@@ -15,11 +15,13 @@ public class DisciplinaEntity {
     private String nome;
     private String ementa;
     private HashSet<TurmaEntity> turmaEntities = new HashSet<>();
+    private final InstituicaoEntity instituicaoEntity;
 
-    public DisciplinaEntity(String nome, String ementa) {
+    public DisciplinaEntity(String nome, String ementa, InstituicaoEntity instituicaoEntity) {
         id = idGenerator.gerarProximoId();
         this.nome = nome;
         this.ementa = ementa;
+        this.instituicaoEntity = instituicaoEntity;
     }
 
     public int getId() {
@@ -52,6 +54,10 @@ public class DisciplinaEntity {
 
     public boolean removerTurma(TurmaEntity turmaEntity) {
         return turmaEntities.remove(turmaEntity);
+    }
+
+    public InstituicaoEntity getInstituicaoEntity() {
+        return instituicaoEntity;
     }
 
     @Override

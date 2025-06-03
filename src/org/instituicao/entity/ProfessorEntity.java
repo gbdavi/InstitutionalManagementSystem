@@ -8,8 +8,8 @@ import java.util.Set;
 public class ProfessorEntity extends FuncionarioEntity {
     private HashSet<TurmaEntity> turmaEntities = new HashSet<>();
 
-    public ProfessorEntity(String cpf, String nome, LocalDate dataNascimento, String email) {
-        super(cpf, nome, dataNascimento, email);
+    public ProfessorEntity(String cpf, String nome, LocalDate dataNascimento, String email, InstituicaoEntity instituicaoEntity) {
+        super(cpf, nome, dataNascimento, email, instituicaoEntity);
     }
 
     public Set<TurmaEntity> getTurmas() {
