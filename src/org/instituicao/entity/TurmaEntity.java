@@ -18,12 +18,10 @@ public class TurmaEntity {
     private HashSet<AlunoEntity> alunoEntities = new HashSet<>();
     private HashSet<AvaliacaoEntity> avaliacaoEntities = new HashSet<>();
     private StatusTurma status = StatusTurma.NAO_INICIADA;
-    private final InstituicaoEntity instituicaoEntity;
 
-    public TurmaEntity(DisciplinaEntity disciplinaEntity, InstituicaoEntity instituicaoEntity) {
+    public TurmaEntity(DisciplinaEntity disciplinaEntity) {
         id = idGenerator.gerarProximoId();
         this.disciplinaEntity = disciplinaEntity;
-        this.instituicaoEntity = instituicaoEntity;
     }
 
     public int getId() {
@@ -107,10 +105,6 @@ public class TurmaEntity {
 
     public boolean removerAvaliacao(AvaliacaoEntity avaliacaoEntity) {
         return avaliacaoEntities.remove(avaliacaoEntity);
-    }
-
-    public InstituicaoEntity getInstituicaoEntity() {
-        return instituicaoEntity;
     }
 
     @Override

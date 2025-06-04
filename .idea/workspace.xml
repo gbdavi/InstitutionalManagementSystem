@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/AvaliacaoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/instituicao/repository/EntregaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
