@@ -36,7 +36,7 @@ public class AlunoService {
 
     /**
      * Cadastra novo aluno na base de dados.
-     * @param alunoDto dados do aluno.
+     * @param alunoCadastroDTO dados do aluno.
      * @return dados do aluno se cadastrado com sucesso, caso contrário null.
      */
     public AlunoDTO cadastrar(AlunoCadastroDTO alunoCadastroDTO) {

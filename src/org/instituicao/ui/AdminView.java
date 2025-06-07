@@ -2,7 +2,6 @@ package org.instituicao.ui;
 
 import org.instituicao.controller.AdminController;
 import org.instituicao.dto.FuncionarioDTO;
-import org.instituicao.entity.AdminEntity;
 
 public class AdminView extends BaseView {
 

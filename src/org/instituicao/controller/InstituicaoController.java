@@ -1,7 +1,6 @@
 package org.instituicao.controller;
 
 import org.instituicao.dto.InstituicaoDTO;
-import org.instituicao.repository.InstituicaoRepository;
 import org.instituicao.service.InstituicaoService;
 
 import java.util.List;
