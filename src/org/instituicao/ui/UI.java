@@ -17,7 +17,15 @@ public class UI extends BaseView {
      */
     public void run() {
         while (true) {
-            switch (solicitarTipoLogin()) {
+            exibirCabecalho("Selecionar ação");
+            System.out.print(
+                    "1 - Entrar como aluno"
+                + "\n2 - Entrar como professor"
+                + "\n3 - Entrar como administrador"
+                + "\n4 - Encerrar aplicação"
+                + "\n> "
+            );
+            switch (scanner.nextLine()) {
                 case "1" -> {
                     alunoView.telaLogin();
                 }
@@ -33,16 +41,5 @@ public class UI extends BaseView {
                 default -> exibirErro("Opção inválida.");
             }
         }
-    }
-
-    private String solicitarTipoLogin() {
-        exibirCabecalho("Selecionar ação");
-        System.out.print("1 - Entrar como aluno"
-            + "\n2 - Entrar como professor"
-            + "\n3 - Entrar como administrador"
-            + "\n4 - Encerrar aplicação"
-            + "\n> "
-        );
-        return scanner.nextLine();
     }
 }

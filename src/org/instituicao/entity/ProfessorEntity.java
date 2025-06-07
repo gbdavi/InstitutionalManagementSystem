@@ -19,7 +19,6 @@ public class ProfessorEntity extends FuncionarioEntity {
     /**
      * Adiciona a turma no set de turmas caso o professor já tenha sido adicionado no set de professores da turma.
      * @param turmaEntity
-     * @return boolean
      */
     public boolean adicionarTurma(TurmaEntity turmaEntity) {
         if (turmaEntity.getProfessores().stream().noneMatch(professor -> professor == this)) {
@@ -31,7 +30,6 @@ public class ProfessorEntity extends FuncionarioEntity {
     /**
      * Remove a turma do set de turmas caso o professor já tenha sido removido do set de professores da turma.
      * @param turmaEntity
-     * @return boolean
      */
     public boolean removerTurma(TurmaEntity turmaEntity) {
         if (turmaEntity.getProfessores().stream().anyMatch(professor -> professor == this)) {

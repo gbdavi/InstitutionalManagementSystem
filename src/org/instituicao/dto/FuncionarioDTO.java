@@ -34,4 +34,9 @@ public class FuncionarioDTO extends PessoaDTO {
     public int getIdInstituicao() {
         return idInstituicao;
     }
+
+    @Override
+    public String toString() {
+        return matricula + " - " + getNome() + " | " + getEmailCorporativo();
+    }
 }

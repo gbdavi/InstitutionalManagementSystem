@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 public class DisciplinaEntity {
-    private static IdGenerator idGenerator = new IdSequencialGenerator(0);
+    private static IdGenerator idGenerator = new IdSequencialGenerator(1);
     private final int id;
     private String nome;
     private String ementa;

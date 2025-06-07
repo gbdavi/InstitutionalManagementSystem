@@ -1,5 +1,6 @@
 package org.instituicao.controller;
 
+import org.instituicao.dto.FuncionarioCadastroDTO;
 import org.instituicao.dto.FuncionarioDTO;
 import org.instituicao.service.ProfessorService;
 
@@ -16,15 +17,24 @@ public class ProfessorController {
 
     /**
      * Retorna informacoes do professor caso login realizado com sucesso
-     * Equivalente a rota /professores/login
+     * Equivalente a rota /professores/login.
      * @param emailCorporativo email corporativo do professor.
      * @param senha senha do professor.
-     * @return
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
         if (emailCorporativo == null || senha == null || emailCorporativo.length() == 0 || senha.length() == 0) {
             return null;
         }
         return professorService.login(emailCorporativo, senha);
+    }
+
+    /**
+     * Cadastra novo professor na base de dados.
+     * Equivalente a rota /professores/cadastrar.
+     * @param professorCadastroDTO dados de cadastro do professor.
+     * @return dados do professor se cadastrado com sucesso, caso contrário null.
+     */
+    public FuncionarioDTO cadastrar(FuncionarioCadastroDTO professorCadastroDTO) {
+        return professorService.cadastrar(professorCadastroDTO);
     }
 }

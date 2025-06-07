@@ -21,4 +21,8 @@ public class InstituicaoRepository {
         return Collections.unmodifiableSet(instituicaoEntities);
     }
 
+    public InstituicaoEntity getInstituicaoById(int id) {
+        return instituicaoEntities.stream().filter(instituicaoEntity -> instituicaoEntity.getId() == id).findFirst().orElse(null);
+    }
+
 }

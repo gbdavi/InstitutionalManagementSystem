@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class TurmaEntity {
-    private static IdGenerator idGenerator = new IdSequencialGenerator(0);
+    private static IdGenerator idGenerator = new IdSequencialGenerator(1);
 
     private final int id;
     private final DisciplinaEntity disciplinaEntity;
@@ -47,7 +47,6 @@ public class TurmaEntity {
     /**
      * Adiciona o professor na turma e adiciona a turma no set de turmas do professor.
      * @param professorEntity
-     * @return boolean
      */
     public boolean adicionarProfessor(ProfessorEntity professorEntity) {
         return professorEntity != null && professorEntities.add(professorEntity) && professorEntity.adicionarTurma(this);
@@ -56,7 +55,6 @@ public class TurmaEntity {
     /**
      * Remove o professor da turma e remove a turma do set de turmas do professor.
      * @param professorEntity
-     * @return boolean
      */
     public boolean removerProfessor(ProfessorEntity professorEntity) {
         return professorEntities.remove(professorEntity) && professorEntity.removerTurma(this);
@@ -69,7 +67,6 @@ public class TurmaEntity {
     /**
      * Adiciona o aluno na turma e adiciona a turma no set de turmas do aluno.
      * @param alunoEntity
-     * @return
      */
     public boolean adicionarAluno(AlunoEntity alunoEntity) {
         if (
@@ -89,7 +86,6 @@ public class TurmaEntity {
     /**
      * Remove o aluno da turma e remove a turma do set de turmas do aluno.
      * @param alunoEntity
-     * @return
      */
     public boolean removerAluno(AlunoEntity alunoEntity) {
         return alunoEntities.remove(alunoEntity) && alunoEntity.removerTurma(this);

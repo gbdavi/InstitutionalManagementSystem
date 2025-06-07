@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 public class CursoEntity {
-    private static IdGenerator idGenerator = new IdSequencialGenerator(0);
+    private static IdGenerator idGenerator = new IdSequencialGenerator(1);
     private final int id;
     private String nome;
     private HashSet<DisciplinaEntity> disciplinaEntities = new HashSet<>();

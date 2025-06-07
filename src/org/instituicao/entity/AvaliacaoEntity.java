@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 public class AvaliacaoEntity {
-    private static IdGenerator idGenerator = new IdSequencialGenerator(0);
+    private static IdGenerator idGenerator = new IdSequencialGenerator(1);
 
     private int id;
     private String descricao;

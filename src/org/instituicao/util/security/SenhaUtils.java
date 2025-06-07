@@ -29,7 +29,7 @@ public class SenhaUtils {
      *
      * @param senha A senha em texto puro fornecida pelo usuário.
      * @param senhaHash O hash completo (salt + hash) em Base64.
-     * @return true se a senha for válida, false caso contrário.
+     * @return True se a senha for válida, false caso contrário.
      */
     public static boolean verificarSenha(String senha, String senhaHash) {
         String[] partes = senhaHash.split(":");
@@ -51,7 +51,6 @@ public class SenhaUtils {
 
     /**
      * Geração de salt aleatório para aplicação do hash.
-     * @return byte[]
      */
     private static byte[] gerarSalt() {
         SecureRandom random = new SecureRandom();
@@ -64,7 +63,6 @@ public class SenhaUtils {
      * Gerar hash para senha aplicando salt.
      * @param senha senha para geração do hash.
      * @param salt salt para aplicação do algoritmo.
-     * @return byte[]
      */
     private static byte[] hashSenha(char[] senha, byte[] salt) {
         try {

@@ -8,7 +8,7 @@ import org.instituicao.util.id.IdSequencialGenerator;
 import java.util.Objects;
 
 public class EntregaEntity {
-    private static IdGenerator idGenerator = new IdSequencialGenerator(0);
+    private static IdGenerator idGenerator = new IdSequencialGenerator(1);
     private int id;
     private AlunoEntity alunoEntity;
     private AvaliacaoEntity avaliacaoEntity;

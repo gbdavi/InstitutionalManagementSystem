@@ -69,7 +69,6 @@ public class AlunoEntity extends PessoaEntity {
     /**
      * Adiciona a turma no set de turmas caso o aluno já tenha sido adicionado no set de alunos da turma.
      * @param turmaEntity
-     * @return boolean
      */
     public boolean adicionarTurma(TurmaEntity turmaEntity) {
         if (
@@ -84,7 +83,6 @@ public class AlunoEntity extends PessoaEntity {
     /**
      * Remove a turma do set de turmas caso o aluno já tenha sido removido do set de alunos da turma.
      * @param turmaEntity
-     * @return boolean
      */
     public boolean removerTurma(TurmaEntity turmaEntity) {
         if (turmaEntity.getAlunos().stream().anyMatch(aluno -> aluno == this)) {

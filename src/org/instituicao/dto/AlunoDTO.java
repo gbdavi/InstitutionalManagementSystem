@@ -9,11 +9,11 @@ public class AlunoDTO extends PessoaDTO {
     private final String emailAcademico;
     private final int idInstituicao;
 
-    public AlunoDTO(String cpf, String nome, LocalDate dataNascimento, String email, int matricula, String emailAcademico, int idInstituicao) {
+    public AlunoDTO(String cpf, String nome, LocalDate dataNascimento, String email, int idInstituicao, int matricula, String emailAcademico) {
         super(cpf, nome, dataNascimento, email);
+        this.idInstituicao = idInstituicao;
         this.matricula = matricula;
         this.emailAcademico = emailAcademico;
-        this.idInstituicao = idInstituicao;
     }
 
     public AlunoDTO(AlunoEntity aluno) {
@@ -33,5 +33,10 @@ public class AlunoDTO extends PessoaDTO {
 
     public int getIdInstituicao() {
         return idInstituicao;
+    }
+
+    @Override
+    public String toString() {
+        return matricula + " - " + getNome() + " | " + getEmailAcademico();
     }
 }

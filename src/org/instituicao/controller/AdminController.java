@@ -19,7 +19,6 @@ public class AdminController {
      * Equivalente a rota /admins/login
      * @param emailCorporativo email corporativo do admin.
      * @param senha senha do admin.
-     * @return
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
         if (emailCorporativo == null || senha == null || emailCorporativo.length() == 0 || senha.length() == 0) {

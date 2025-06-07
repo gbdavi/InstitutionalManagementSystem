@@ -3,7 +3,6 @@ package org.instituicao.ui;
 import java.util.Scanner;
 
 public abstract class BaseView {
-
     protected final Scanner scanner = new Scanner(System.in);
     private static final String ansiReset = "\u001B[0m";
     private static final String ansiCyan = "\u001B[36m";
@@ -23,16 +22,28 @@ public abstract class BaseView {
      * Exibir mensagem informativa formatada para usuário.
      * @param info mensagem.
      */
+    public void exibirInfo(String prefixo, String info) {
+        System.out.println(ansiCyan + prefixo + "[INFO] " + info + ansiReset);
+    }
+
     public void exibirInfo(String info) {
-        System.out.println(ansiCyan + "[INFO] " + info + ansiReset);
+        exibirInfo("", info);
     }
 
     /**
      * Exibir mensagem de erro formatada para usuário.
      * @param erro mensagem.
      */
-    public void exibirErro(String erro) {
-        System.out.println(ansiRed + "[ERRO] " + erro + ansiReset);
+    public void exibirErro(String prefixo, String erro) {
+        System.out.println(ansiRed + prefixo + "[ERRO] " + erro + ansiReset);
     }
 
+    public void exibirErro(String erro) {
+        exibirErro("", erro);
+    }
+
+    public String solicitarCampo(String nomeCampo) {
+        System.out.print(nomeCampo + ": ");
+        return scanner.nextLine();
+    }
 }
