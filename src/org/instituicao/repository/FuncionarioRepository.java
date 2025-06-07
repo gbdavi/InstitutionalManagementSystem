@@ -17,7 +17,7 @@ public class FuncionarioRepository {
     }
 
     public Optional<FuncionarioEntity> getFuncionarioByEmailCorporativo(String email) {
-        return funcionarioEntities.stream().filter(funcionario -> funcionario.getEmailCorporativo().equals(email)).findFirst();
+        return funcionarioEntities.stream().filter(funcionario -> funcionario.getEmailCorporativo().equalsIgnoreCase(email)).findFirst();
     }
 
 }

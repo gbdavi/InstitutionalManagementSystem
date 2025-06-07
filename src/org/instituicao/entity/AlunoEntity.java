@@ -20,6 +20,9 @@ public class AlunoEntity extends PessoaEntity {
 
     public AlunoEntity(String cpf, String nome, LocalDate dataNascimento, String email, InstituicaoEntity instituicaoEntity) {
         super(cpf, nome, dataNascimento, email);
+        if (instituicaoEntity == null) {
+            throw new NullPointerException("O parâmetro 'instituicaoEntity' não pode ser nulo");
+        }
         this.instituicaoEntity = instituicaoEntity;
     }
 
@@ -40,7 +43,7 @@ public class AlunoEntity extends PessoaEntity {
     }
 
     public boolean verificarSenha(String senha) {
-        return SenhaUtils.verificarSenha(senha, senhaHash);
+        return senha != null && senhaHash != null && SenhaUtils.verificarSenha(senha, senhaHash);
     }
 
     public void setSenha(String senha) {

@@ -1,5 +1,7 @@
 package org.instituicao.dto;
 
+import org.instituicao.entity.AlunoEntity;
+
 import java.time.LocalDate;
 
 public class AlunoDTO extends PessoaDTO {
@@ -12,6 +14,13 @@ public class AlunoDTO extends PessoaDTO {
         this.matricula = matricula;
         this.emailAcademico = emailAcademico;
         this.idInstituicao = idInstituicao;
+    }
+
+    public AlunoDTO(AlunoEntity aluno) {
+        super(aluno.getCpf(), aluno.getNome(), aluno.getDataNascimento(), aluno.getEmail());
+        this.matricula = aluno.getMatricula();
+        this.emailAcademico = aluno.getEmailAcademico();
+        this.idInstituicao = aluno.getInstituicaoEntity().getId();
     }
 
     public int getMatricula() {

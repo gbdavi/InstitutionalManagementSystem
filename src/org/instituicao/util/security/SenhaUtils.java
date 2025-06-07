@@ -10,8 +10,8 @@ import java.util.Base64;
  * */
 public class SenhaUtils {
 
-    private static final int ITERACOES = 65536;
-    private static final int COMPRIMENTO_CHAVE = 256;
+    private static final int iteracoes = 65536;
+    private static final int comprimentoChave = 256;
 
     /**
      * Gera um hash seguro codificado em Base64 para a senha fornecida utilizando o algoritmo SHA-256 com salt aleatório.
@@ -49,6 +49,10 @@ public class SenhaUtils {
         return diff == 0;
     }
 
+    /**
+     * Geração de salt aleatório para aplicação do hash.
+     * @return byte[]
+     */
     private static byte[] gerarSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
@@ -56,9 +60,15 @@ public class SenhaUtils {
         return salt;
     }
 
+    /**
+     * Gerar hash para senha aplicando salt.
+     * @param senha senha para geração do hash.
+     * @param salt salt para aplicação do algoritmo.
+     * @return byte[]
+     */
     private static byte[] hashSenha(char[] senha, byte[] salt) {
         try {
-            PBEKeySpec spec = new PBEKeySpec(senha, salt, ITERACOES, COMPRIMENTO_CHAVE);
+            PBEKeySpec spec = new PBEKeySpec(senha, salt, iteracoes, comprimentoChave);
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             return skf.generateSecret(spec).getEncoded();
         } catch (Exception e) {

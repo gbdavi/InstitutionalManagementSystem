@@ -17,7 +17,7 @@ public class AlunoRepository {
     }
 
     public Optional<AlunoEntity> getAlunoByEmailAcademico(String email) {
-        return alunoEntities.stream().filter(aluno -> aluno.getEmailAcademico().equals(email)).findFirst();
+        return alunoEntities.stream().filter(aluno -> aluno.getEmailAcademico().equalsIgnoreCase(email)).findFirst();
     }
 
 }
