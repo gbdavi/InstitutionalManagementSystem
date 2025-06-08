@@ -2,7 +2,11 @@ package org.instituicao.controller;
 
 import org.instituicao.dto.AlunoCadastroDTO;
 import org.instituicao.dto.AlunoDTO;
+import org.instituicao.dto.RelatorioAlunoDTO;
+import org.instituicao.dto.RelatorioCursoDTO;
 import org.instituicao.service.AlunoService;
+
+import java.util.List;
 
 /**
  * Controller para dados do aluno
@@ -37,6 +41,10 @@ public class AlunoController {
      */
     public AlunoDTO cadastrar(AlunoCadastroDTO alunoCadastroDTO) {
         return alunoService.cadastrar(alunoCadastroDTO);
+    }
+
+    public RelatorioAlunoDTO getRelatorio(int matriculaAluno) {
+        return alunoService.getRelatorio(matriculaAluno);
     }
 
 }

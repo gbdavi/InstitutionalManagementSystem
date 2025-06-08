@@ -1,5 +1,5 @@
 package org.instituicao.type;
 
 public enum SituacaoDisciplina {
-    APROVADO, REPROVADO
+    APROVADO, REPROVADO, CURSANDO, A_CURSAR
 }

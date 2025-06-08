@@ -17,7 +17,15 @@ public class AlunoRepository {
     }
 
     public Optional<AlunoEntity> getAlunoByEmailAcademico(String email) {
-        return alunoEntities.stream().filter(aluno -> aluno.getEmailAcademico().equalsIgnoreCase(email)).findFirst();
+        return alunoEntities.stream()
+                .filter(alunoEntity -> alunoEntity.getEmailAcademico().equalsIgnoreCase(email))
+                .findFirst();
+    }
+
+    public Optional<AlunoEntity> getAlunoByMatricula(int matriculaAluno) {
+        return alunoEntities.stream()
+                .filter(alunoEntity -> alunoEntity.getMatricula() == matriculaAluno)
+                .findFirst();
     }
 
 }

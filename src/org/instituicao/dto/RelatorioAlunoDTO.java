@@ -1,22 +1,28 @@
 package org.instituicao.dto;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RelatorioAlunoDTO {
 
-    private final AlunoDTO aluno;
-    private final ArrayList<RelatorioCursoDTO> relatorioCursos;
+    private final int matricula;
+    private final String nome;
+    private final List<RelatorioCursoDTO> relatorioCursos;
 
-    public RelatorioAlunoDTO(AlunoDTO aluno, ArrayList<RelatorioCursoDTO> relatorioCursos) {
-        this.aluno = aluno;
+    public RelatorioAlunoDTO(int matricula, String nome,  List<RelatorioCursoDTO> relatorioCursos) {
+        this.nome = nome;
+        this.matricula = matricula;
         this.relatorioCursos = relatorioCursos;
     }
 
-    public AlunoDTO getAluno() {
-        return aluno;
+    public String getNome() {
+        return nome;
     }
 
-    public ArrayList<RelatorioCursoDTO> getRelatorioCursos() {
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public List<RelatorioCursoDTO> getRelatorioCursos() {
         return relatorioCursos;
     }
 }

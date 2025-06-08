@@ -18,7 +18,7 @@ public class EntregaRepository {
         return entregaEntities.remove(entregaEntity);
     }
 
-    public List<EntregaEntity> getEntregasByTurmaAluno(TurmaEntity turmaEntity, AlunoEntity alunoEntity) {
-        return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getTurma().equals(turmaEntity) && entregaEntity.getAluno().equals(alunoEntity)).toList();
+    public List<EntregaEntity> getEntregasByTurmaAluno(int turmaId, int matriculaAluno) {
+        return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getTurma().getId() == turmaId && entregaEntity.getAluno().getMatricula() == matriculaAluno).toList();
     }
 }

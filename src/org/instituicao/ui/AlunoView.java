@@ -2,9 +2,7 @@ package org.instituicao.ui;
 
 import org.instituicao.controller.AlunoController;
 import org.instituicao.controller.InstituicaoController;
-import org.instituicao.dto.AlunoCadastroDTO;
-import org.instituicao.dto.AlunoDTO;
-import org.instituicao.dto.InstituicaoDTO;
+import org.instituicao.dto.*;
 import org.instituicao.util.data.DataUtils;
 
 import java.util.List;
@@ -29,7 +27,7 @@ public class AlunoView extends BaseView {
                 solicitarCampo("Senha"));
         if (aluno != null) {
             System.out.println("\nBem vindo(a) " + aluno.getNome() + "!");
-//            menuAluno(aluno);
+            menuAluno(aluno);
         } else {
             exibirErro("Credenciais inválidas.");
         }
@@ -83,6 +81,47 @@ public class AlunoView extends BaseView {
             }
         } catch (Exception e) {
             exibirErro("Valor inválido!");
+        }
+    }
+
+    private void menuAluno(AlunoDTO alunoDTO) {
+        while (true) {
+            exibirCabecalho("Selecionar ação");
+            System.out.print(
+                    "1 - Exibir relatório"
+                + "\n2 - Voltar"
+                + "\n> "
+            );
+            switch (scanner.nextLine()) {
+                case "1" -> {
+                    RelatorioAlunoDTO relatorioAlunoDTO = alunoController.getRelatorio(alunoDTO.getMatricula());
+                    exibirRelatorio(relatorioAlunoDTO);
+                }
+                case "2" -> {
+                    return;
+                }
+                default -> exibirErro("Opção inválida.");
+            }
+        }
+    }
+
+    /**
+     * Exibir dados formatados do relatório do aluno.
+     * @param relatorioAlunoDTO relatório do aluno.
+     */
+    public void exibirRelatorio(RelatorioAlunoDTO relatorioAlunoDTO) {
+        System.out.println("Aluno: " + relatorioAlunoDTO.getMatricula() + " - " + relatorioAlunoDTO.getNome());
+        System.out.println("* Cursos:");
+        for (RelatorioCursoDTO relatorioCurso : relatorioAlunoDTO.getRelatorioCursos()) {
+            System.out.println("\t- " + relatorioCurso.getCurso().getNome());
+            System.out.println("\t\t  Disciplina" + " ".repeat(50) + " | Média | Situação");
+            for (RelatorioDisciplinaDTO relatorioDisciplina : relatorioCurso.getRelatorioDisciplinas()) {
+                if (relatorioDisciplina.getMedia() != null) {
+                    System.out.printf("\t\t- %-60s | %5.2f | %s \n", relatorioDisciplina.getDisciplina().getNome(), relatorioDisciplina.getMedia(), relatorioDisciplina.getSituacao());
+                } else {
+                    System.out.printf("\t\t- %-60s |   -   | %s \n", relatorioDisciplina.getDisciplina().getNome(), relatorioDisciplina.getSituacao());
+                }
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import org.instituicao.entity.InstituicaoEntity;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class InstituicaoRepository {
@@ -21,8 +22,8 @@ public class InstituicaoRepository {
         return Collections.unmodifiableSet(instituicaoEntities);
     }
 
-    public InstituicaoEntity getInstituicaoById(int id) {
-        return instituicaoEntities.stream().filter(instituicaoEntity -> instituicaoEntity.getId() == id).findFirst().orElse(null);
+    public Optional<InstituicaoEntity> getInstituicaoById(int id) {
+        return instituicaoEntities.stream().filter(instituicaoEntity -> instituicaoEntity.getId() == id).findFirst();
     }
 
 }

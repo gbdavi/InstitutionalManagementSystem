@@ -5,6 +5,7 @@ import org.instituicao.entity.InstituicaoEntity;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public class CursoRepository {
     private static HashSet<CursoEntity> cursoEntities = new HashSet<>();
@@ -19,5 +20,9 @@ public class CursoRepository {
 
     public List<CursoEntity> getCursosByInstituicao(InstituicaoEntity instituicao) {
         return cursoEntities.stream().filter(curso -> curso.getInstituicaoEntity().equals(instituicao)).toList();
+    }
+
+    public Optional<CursoEntity> getCursoById(int idCurso) {
+        return cursoEntities.stream().filter(curso -> curso.getId() == idCurso).findFirst();
     }
 }

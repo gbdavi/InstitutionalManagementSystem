@@ -1,5 +1,6 @@
 package org.instituicao.controller;
 
+import org.instituicao.dto.FuncionarioCadastroDTO;
 import org.instituicao.dto.FuncionarioDTO;
 import org.instituicao.service.AdminService;
 
@@ -25,5 +26,15 @@ public class AdminController {
             return null;
         }
         return adminService.login(emailCorporativo, senha);
+    }
+
+    /**
+     * Cadastra novo admin na base de dados.
+     * Equivalente a rota /admins/cadastrar.
+     * @param adminCadastroDTO dados de cadastro do admin.
+     * @return dados do admin se cadastrado com sucesso, caso contrário null.
+     */
+    public FuncionarioDTO cadastrar(FuncionarioCadastroDTO adminCadastroDTO) {
+        return adminService.cadastrar(adminCadastroDTO);
     }
 }

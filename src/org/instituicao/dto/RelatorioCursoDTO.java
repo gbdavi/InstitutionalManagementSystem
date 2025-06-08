@@ -1,13 +1,13 @@
 package org.instituicao.dto;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RelatorioCursoDTO {
 
     private final CursoDTO curso;
-    private final ArrayList<RelatorioDisciplinaDTO> relatorioDisciplinas;
+    private final List<RelatorioDisciplinaDTO> relatorioDisciplinas;
 
-    public RelatorioCursoDTO(CursoDTO curso, ArrayList<RelatorioDisciplinaDTO> relatorioDisciplinas) {
+    public RelatorioCursoDTO(CursoDTO curso, List<RelatorioDisciplinaDTO> relatorioDisciplinas) {
         this.curso = curso;
         this.relatorioDisciplinas = relatorioDisciplinas;
     }
@@ -16,7 +16,7 @@ public class RelatorioCursoDTO {
         return curso;
     }
 
-    public ArrayList<RelatorioDisciplinaDTO> getRelatorioDisciplinas() {
+    public List<RelatorioDisciplinaDTO> getRelatorioDisciplinas() {
         return relatorioDisciplinas;
     }
 }

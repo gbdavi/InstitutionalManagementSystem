@@ -6,6 +6,7 @@ import org.instituicao.entity.TurmaEntity;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public class TurmaRepository {
     private static HashSet<TurmaEntity> turmaEntities = new HashSet<>();
@@ -18,8 +19,12 @@ public class TurmaRepository {
         return turmaEntities.remove(turmaEntity);
     }
 
-    public List<TurmaEntity> getTurmasByAluno(AlunoEntity alunoEntity) {
-        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getAlunos().contains(alunoEntity)).toList();
+    public Optional<TurmaEntity> getTurmaById(int idTurma) {
+        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getId() == idTurma).findFirst();
+    }
+
+    public List<TurmaEntity> getTurmasByAluno(int matricula) {
+        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getAlunos().stream().anyMatch(alunoEntity -> alunoEntity.getMatricula() == matricula)).toList();
     }
 
     public List<TurmaEntity> getTurmasByProfessor(ProfessorEntity professorEntity) {

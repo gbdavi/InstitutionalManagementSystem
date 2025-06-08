@@ -1,5 +1,7 @@
 package org.instituicao.dto;
 
+import org.instituicao.entity.CursoEntity;
+
 public class CursoDTO {
     private final int id;
     private final String nome;
@@ -9,6 +11,12 @@ public class CursoDTO {
         this.id = id;
         this.nome = nome;
         this.idInstituicao = idInstituicao;
+    }
+
+    public CursoDTO(CursoEntity curso) {
+        this.id = curso.getId();
+        this.nome = curso.getNome();
+        this.idInstituicao = curso.getInstituicaoEntity().getId();
     }
 
     public int getId() {

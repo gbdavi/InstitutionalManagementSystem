@@ -41,14 +41,14 @@ public class ProfessorService {
      * @return dados do professor se cadastrado com sucesso, caso contrário null.
      */
     public FuncionarioDTO cadastrar(FuncionarioCadastroDTO professorCadastroDTO) {
-        InstituicaoEntity instituicao = instituicaoRepository.getInstituicaoById(professorCadastroDTO.getIdInstituicao());
-        if (instituicao == null) {
+        Optional<InstituicaoEntity> instituicao = instituicaoRepository.getInstituicaoById(professorCadastroDTO.getIdInstituicao());
+        if (!instituicao.isPresent()) {
             return null;
         }
 
-        ProfessorEntity professor = new ProfessorEntity(professorCadastroDTO.getCpf(), professorCadastroDTO.getNome(), professorCadastroDTO.getDataNascimento(), professorCadastroDTO.getEmail(), instituicao);
+        ProfessorEntity professor = new ProfessorEntity(professorCadastroDTO.getCpf(), professorCadastroDTO.getNome(), professorCadastroDTO.getDataNascimento(), professorCadastroDTO.getEmail(), instituicao.get());
         professor.setSenha(professorCadastroDTO.getSenha());
-        instituicaoService.atribuirDadosCorporativos(instituicao, professor);
+        instituicaoService.atribuirDadosCorporativos(instituicao.get(), professor);
 
         if (funcionarioRepository.adicionarFuncionario(professor)) {
             return new FuncionarioDTO(professor);

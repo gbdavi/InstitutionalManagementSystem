@@ -16,6 +16,10 @@ public class FuncionarioRepository {
         return funcionarioEntities.remove(funcionario);
     }
 
+    public Optional<FuncionarioEntity> getFuncionarioByMatricula(int matriculaFuncionario) {
+        return funcionarioEntities.stream().filter(funcionario -> funcionario.getMatricula() == matriculaFuncionario).findFirst();
+    }
+
     public Optional<FuncionarioEntity> getFuncionarioByEmailCorporativo(String email) {
         return funcionarioEntities.stream().filter(funcionario -> funcionario.getEmailCorporativo().equalsIgnoreCase(email)).findFirst();
     }
