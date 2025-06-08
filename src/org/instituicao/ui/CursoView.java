@@ -19,18 +19,19 @@ public class CursoView extends BaseView {
 
     public void telaAdicionarAluno(int idInstituicao) {
         try {
-            exibirCabecalho("Adicionar aluno");
+            exibirCabecalho("Adicionar aluno ao curso");
 
             exibirInfo("Cursos disponíveis:");
             List<CursoDTO> cursosDisponiveis = cursoController.getCursos(idInstituicao);
             cursosDisponiveis.forEach(System.out::println);
 
-            int idCurso = Integer.parseInt(solicitarCampo("\nId instituição"));
+            int idCurso = Integer.parseInt(solicitarCampo("\nId curso"));
             if (cursosDisponiveis.stream().noneMatch(cursoDTO -> cursoDTO.getId() == idCurso)) {
                 exibirErro("Curso inválido!");
                 return;
             }
 
+            exibirInfo("\nAlunos disponíveis:");
             List<AlunoDTO> alunosDisponiveis = alunoController.getAlunos(idInstituicao);
             alunosDisponiveis.forEach(System.out::println);
 

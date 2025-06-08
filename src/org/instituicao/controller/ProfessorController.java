@@ -4,6 +4,8 @@ import org.instituicao.dto.FuncionarioCadastroDTO;
 import org.instituicao.dto.FuncionarioDTO;
 import org.instituicao.service.ProfessorService;
 
+import java.util.List;
+
 /**
  * Controller para dados do professor
  * Equivalente a rota base /professores
@@ -36,5 +38,13 @@ public class ProfessorController {
      */
     public FuncionarioDTO cadastrar(FuncionarioCadastroDTO professorCadastroDTO) {
         return professorService.cadastrar(professorCadastroDTO);
+    }
+
+    /**
+     * Retorna todos os professores da instituicao cadastrados na base de dados.
+     * Equivalente a rota /professores.
+     */
+    public List<FuncionarioDTO> getProfessores(int idInstituicao) {
+        return professorService.getProfessores(idInstituicao);
     }
 }

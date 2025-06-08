@@ -5,6 +5,8 @@ import org.instituicao.dto.TurmaDTO;
 import org.instituicao.service.TurmaService;
 import org.instituicao.type.StatusTurma;
 
+import java.util.List;
+
 public class TurmaController {
     private final TurmaService turmaService;
 
@@ -53,5 +55,19 @@ public class TurmaController {
         return turmaService.alterarStatus(idTurma, statusTurma);
     }
 
+    /**
+     * Retorna todas as turmas na base de dados disponíveis para cadastro do aluno.
+     * Equivalente a rota /turmas (byAluno via queryParams).
+     */
+    public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
+        return turmaService.getTurmasDisponiveisByAluno(matriculaAluno);
+    }
 
+    /**
+     * Retorna todas as turmas da instituição da base de dados.
+     * Equivalente a rota /turmas (byInstituicao via queryParams).
+     */
+    public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
+        return turmaService.getTurmasByInstituicao(idInstituicao);
+    }
 }

@@ -8,6 +8,7 @@ import org.instituicao.entity.ProfessorEntity;
 import org.instituicao.repository.FuncionarioRepository;
 import org.instituicao.repository.InstituicaoRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ProfessorService {
@@ -54,5 +55,15 @@ public class ProfessorService {
             return new FuncionarioDTO(professor);
         }
         return null;
+    }
+
+    /**
+     * Retorna todos os professores da instituicao cadastrados na base de dados.
+     */
+    public List<FuncionarioDTO> getProfessores(int idInstituicao) {
+        return funcionarioRepository.getFuncionarioByInstituicao(idInstituicao).stream()
+            .filter(funcionario -> funcionario instanceof ProfessorEntity)
+            .map(FuncionarioDTO::new)
+            .toList();
     }
 }

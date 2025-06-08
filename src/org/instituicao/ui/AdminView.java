@@ -9,12 +9,14 @@ public class AdminView extends BaseView {
     private final AlunoView alunoView;
     private final ProfessorView professorView;
     private final CursoView cursoView;
+    private final TurmaView turmaView;
 
     public AdminView() {
         this.adminController = new AdminController();
         this.alunoView = new AlunoView();
         this.professorView = new ProfessorView();
         this.cursoView = new CursoView();
+        this.turmaView = new TurmaView();
     }
 
     /**
@@ -44,7 +46,6 @@ public class AdminView extends BaseView {
                 + "\n4 - Adicionar aluno a turma"
                 + "\n5 - Adicionar professor a turma"
                 + "\n6 - Voltar"
-                + "\n7 - Voltar"
                 + "\n> "
             );
             switch (scanner.nextLine()) {
@@ -57,7 +58,13 @@ public class AdminView extends BaseView {
                 case "3" -> {
                     cursoView.telaAdicionarAluno(admin.getIdInstituicao());
                 }
-                case "7" -> {
+                case "4" -> {
+                    turmaView.telaAdicionarAluno(admin.getIdInstituicao());
+                }
+                case "5" -> {
+                    turmaView.telaAdicionarProfessor(admin.getIdInstituicao());
+                }
+                case "6" -> {
                     return;
                 }
                 default -> exibirErro("Opção inválida.");

@@ -6,6 +6,7 @@ import org.instituicao.entity.*;
 import org.instituicao.repository.*;
 import org.instituicao.type.StatusTurma;
 
+import java.util.List;
 import java.util.Optional;
 
 public class TurmaService {
@@ -88,5 +89,27 @@ public class TurmaService {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Retorna todas as turmas na base de dados disponíveis para cadastro do aluno.
+     */
+    public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
+        Optional<AlunoEntity> aluno = alunoRepository.getAlunoByMatricula(matriculaAluno);
+        if (aluno.isPresent()) {
+            return turmaRepository.getTurmasDisponiveisByAluno(aluno.get()).stream()
+                    .map(TurmaDTO::new)
+                    .toList();
+        }
+        return List.of();
+    }
+
+    /**
+     * Retorna todas as turmas da instituição da base de dados.
+     */
+    public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
+        return turmaRepository.getTurmasByInstituicao(idInstituicao).stream()
+            .map(TurmaDTO::new)
+            .toList();
     }
 }

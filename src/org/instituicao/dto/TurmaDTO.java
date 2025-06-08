@@ -5,18 +5,18 @@ import org.instituicao.type.StatusTurma;
 
 public class TurmaDTO {
     private final int id;
-    private final int idDisciplina;
+    private final DisciplinaDTO disciplina;
     private final StatusTurma status;
 
-    public TurmaDTO(int id, int idDisciplina, StatusTurma status) {
+    public TurmaDTO(int id, DisciplinaDTO disciplina, StatusTurma status) {
         this.id = id;
-        this.idDisciplina = idDisciplina;
+        this.disciplina = disciplina;
         this.status = status;
     }
 
     public TurmaDTO(TurmaEntity turma) {
         this.id = turma.getId();
-        this.idDisciplina = turma.getDisciplina().getId();
+        this.disciplina = new DisciplinaDTO(turma.getDisciplina());
         this.status = turma.getStatus();
     }
 
@@ -24,11 +24,16 @@ public class TurmaDTO {
         return id;
     }
 
-    public int getIdDisciplina() {
-        return idDisciplina;
+    public DisciplinaDTO getDisciplina() {
+        return disciplina;
     }
 
     public StatusTurma getStatus() {
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + disciplina.getNome();
     }
 }

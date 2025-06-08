@@ -1,6 +1,7 @@
 package org.instituicao.repository;
 
 import org.instituicao.entity.AlunoEntity;
+import org.instituicao.entity.CursoEntity;
 import org.instituicao.entity.ProfessorEntity;
 import org.instituicao.entity.TurmaEntity;
 
@@ -27,7 +28,15 @@ public class TurmaRepository {
         return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getAlunos().stream().anyMatch(alunoEntity -> alunoEntity.getMatricula() == matricula)).toList();
     }
 
-    public List<TurmaEntity> getTurmasByProfessor(ProfessorEntity professorEntity) {
-        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getProfessores().contains(professorEntity)).toList();
+    public List<TurmaEntity> getTurmasDisponiveisByAluno(AlunoEntity alunoEntity) {
+        return turmaEntities.stream()
+                .filter(turmaEntity -> !alunoEntity.getTurmas().contains(turmaEntity) && alunoEntity.getCursos().stream().anyMatch(curso -> curso.getDisciplinas().contains(turmaEntity.getDisciplina())))
+                .toList();
+    }
+
+    public List<TurmaEntity> getTurmasByInstituicao(int idInstituicao) {
+        return turmaEntities.stream()
+                .filter(turmaEntity -> turmaEntity.getDisciplina().getInstituicaoEntity().getId() == idInstituicao)
+                .toList();
     }
 }
