@@ -114,7 +114,7 @@ public class AlunoView extends BaseView {
         System.out.println("* Cursos:");
         for (RelatorioCursoDTO relatorioCurso : relatorioAlunoDTO.getRelatorioCursos()) {
             System.out.println("\t- " + relatorioCurso.getCurso().getNome());
-            System.out.println("\t\t  Disciplina" + " ".repeat(50) + " | Média | Situação");
+            System.out.println("\t\t* Disciplina" + " ".repeat(50) + " | Média | Situação");
             for (RelatorioDisciplinaDTO relatorioDisciplina : relatorioCurso.getRelatorioDisciplinas()) {
                 if (relatorioDisciplina.getMedia() != null) {
                     System.out.printf("\t\t- %-60s | %5.2f | %s \n", relatorioDisciplina.getDisciplina().getNome(), relatorioDisciplina.getMedia(), relatorioDisciplina.getSituacao());

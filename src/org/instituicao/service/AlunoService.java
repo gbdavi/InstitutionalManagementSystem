@@ -15,12 +15,14 @@ public class AlunoService {
     private final InstituicaoRepository instituicaoRepository;
     private final InstituicaoService instituicaoService;
     private final EntregaRepository entregaRepository;
+    private final TurmaRepository turmaRepository;
 
     public AlunoService() {
         this.alunoRepository = new AlunoRepository();
         this.instituicaoRepository = new InstituicaoRepository();
         this.instituicaoService = new InstituicaoService();
         this.entregaRepository = new EntregaRepository();
+        this.turmaRepository = new TurmaRepository();
     }
 
     /**
@@ -69,40 +71,29 @@ public class AlunoService {
             return null;
         }
 
+        List<TurmaEntity> turmasAluno = turmaRepository.getTurmasByAluno(matriculaAluno);
+
         List<RelatorioCursoDTO> relatorioCursos = aluno.get().getCursos().stream().map(curso -> new RelatorioCursoDTO(
             new CursoDTO(curso),
             curso.getDisciplinas().stream()
                 .map(disciplina -> {
                     DisciplinaDTO disciplinaDTO = new DisciplinaDTO(disciplina);
-                    Optional<TurmaEntity> turmaAluno = getTurmaByAluno(matriculaAluno, disciplina);
-                    if (turmaAluno.isPresent()) {
-                        if (turmaAluno.get().getStatus() == StatusTurma.CONCLUIDA) {
-                            float media = calcularMediaDisciplina(matriculaAluno, turmaAluno.get());
+                    Optional<TurmaEntity> turmaDisciplina = turmasAluno.stream().filter(turmaEntity -> turmaEntity.getDisciplina() == disciplina).findFirst();
+                    if (turmaDisciplina.isPresent()) {
+                        if (turmaDisciplina.get().getStatus() == StatusTurma.CONCLUIDA) {
+                            float media = calcularMediaDisciplina(matriculaAluno, turmaDisciplina.get());
                             SituacaoDisciplina situacaoDisciplina = media >= 7 ? SituacaoDisciplina.APROVADO : SituacaoDisciplina.REPROVADO;
                             return new RelatorioDisciplinaDTO(disciplinaDTO, media, situacaoDisciplina);
                         }
-                        SituacaoDisciplina situacaoDisciplina = turmaAluno.get().getStatus() == StatusTurma.NAO_INICIADA ? SituacaoDisciplina.A_CURSAR : SituacaoDisciplina.CURSANDO;
+                        SituacaoDisciplina situacaoDisciplina = turmaDisciplina.get().getStatus() == StatusTurma.NAO_INICIADA ? SituacaoDisciplina.A_CURSAR : SituacaoDisciplina.CURSANDO;
                         return new RelatorioDisciplinaDTO(disciplinaDTO, null, situacaoDisciplina);
                     }
-                    System.out.println("turmaAluno null ");
-                    System.out.println(turmaAluno);
                     return new RelatorioDisciplinaDTO(disciplinaDTO, null, SituacaoDisciplina.A_CURSAR);
                 }).sorted(Comparator.comparing(o -> o.getDisciplina().getNome()))
             .toList()
         )).toList();
 
         return new RelatorioAlunoDTO(matriculaAluno, aluno.get().getNome(), relatorioCursos);
-    }
-
-    /**
-     * Seleciona a turma que o aluno está inserido através da disciplina fornecida.
-     * @param matriculaAluno matrícula do aluno.
-     * @param disciplina disciplina cursadas pelo aluno através de algum curso.
-     */
-    private Optional<TurmaEntity> getTurmaByAluno(int matriculaAluno, DisciplinaEntity disciplina) {
-        return disciplina.getTurmas().stream()
-            .filter(turmaEntity -> turmaEntity.getAlunos().stream().anyMatch(alunoEntity -> alunoEntity.getMatricula() == matriculaAluno))
-            .findFirst();
     }
 
     /**

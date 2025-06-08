@@ -14,7 +14,6 @@ public class DisciplinaEntity {
     private final int id;
     private String nome;
     private String ementa;
-    private HashSet<TurmaEntity> turmaEntities = new HashSet<>();
     private final InstituicaoEntity instituicaoEntity;
 
     public DisciplinaEntity(String nome, String ementa, InstituicaoEntity instituicaoEntity) {
@@ -42,18 +41,6 @@ public class DisciplinaEntity {
 
     public void setEmenta(String ementa) {
         this.ementa = ementa;
-    }
-
-    public Set<TurmaEntity> getTurmas() {
-        return Collections.unmodifiableSet(turmaEntities);
-    }
-
-    public boolean adicionarTurma(TurmaEntity turmaEntity) {
-        return turmaEntities.add(turmaEntity);
-    }
-
-    public boolean removerTurma(TurmaEntity turmaEntity) {
-        return turmaEntities.remove(turmaEntity);
     }
 
     public InstituicaoEntity getInstituicaoEntity() {

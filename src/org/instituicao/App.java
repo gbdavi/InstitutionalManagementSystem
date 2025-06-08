@@ -3,7 +3,6 @@ package org.instituicao;
 import org.instituicao.controller.*;
 import org.instituicao.dto.*;
 import org.instituicao.type.StatusTurma;
-import org.instituicao.ui.AlunoView;
 import org.instituicao.ui.UI;
 import org.instituicao.util.data.DataUtils;
 
@@ -29,6 +28,8 @@ public class App {
 
         TurmaDTO turma = turmaController.cadastrar(new TurmaCadastroDTO(disciplina.getId()));
         turmaController.alterarStatus(turma.getId(), StatusTurma.EM_ANDAMENTO);
+
+        avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Cadastro e Gerenciamento de Alunos", turma.getId()));
 
         // Inicializar usuários pré-cadastrados
         AlunoCadastroDTO alunoCadastroDTO = new AlunoCadastroDTO("00012345678", "Davi Gramm Bauer", DataUtils.processarDataNascimento("27/09/2004"),"davi@mail.com", instituicao.getId(), "aluno123");
