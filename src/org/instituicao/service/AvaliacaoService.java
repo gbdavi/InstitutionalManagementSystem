@@ -76,5 +76,13 @@ public class AvaliacaoService {
         return false;
     }
 
+    /**
+     * Retorna as avaliações pendentes de um aluno na base de dados.
+     */
+    public List<AvaliacaoDTO> getAvaliacoesPendentesByAluno(int matriculaAluno) {
+        return entregaRepository.getEntregasPendentesByAluno(matriculaAluno).stream()
+            .map(entregaEntity -> new AvaliacaoDTO(entregaEntity.getAvaliacao()))
+            .toList();
+    }
 
 }

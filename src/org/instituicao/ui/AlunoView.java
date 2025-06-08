@@ -1,6 +1,7 @@
 package org.instituicao.ui;
 
 import org.instituicao.controller.AlunoController;
+import org.instituicao.controller.AvaliacaoController;
 import org.instituicao.controller.InstituicaoController;
 import org.instituicao.dto.*;
 import org.instituicao.util.data.DataUtils;
@@ -11,10 +12,12 @@ import java.util.List;
 public class AlunoView extends BaseView {
     private final AlunoController alunoController;
     private final InstituicaoController instituicaoController;
+    private final AvaliacaoView avaliacaoView;
 
     public AlunoView() {
         this.alunoController = new AlunoController();
         this.instituicaoController = new InstituicaoController();
+        this.avaliacaoView = new AvaliacaoView();
     }
 
     /**
@@ -86,10 +89,11 @@ public class AlunoView extends BaseView {
 
     private void menuAluno(AlunoDTO alunoDTO) {
         while (true) {
-            exibirCabecalho("Selecionar ação");
+            exibirCabecalho("Selecionar ação - Aluno: " + alunoDTO.getMatricula());
             System.out.print(
                     "1 - Exibir relatório"
-                + "\n2 - Voltar"
+                + "\n2 - Entregar avaliação"
+                + "\n3 - Voltar"
                 + "\n> "
             );
             switch (scanner.nextLine()) {
@@ -98,6 +102,9 @@ public class AlunoView extends BaseView {
                     exibirRelatorio(relatorioAlunoDTO);
                 }
                 case "2" -> {
+                    avaliacaoView.telaEntregarAvaliacao(alunoDTO.getMatricula());
+                }
+                case "3" -> {
                     return;
                 }
                 default -> exibirErro("Opção inválida.");

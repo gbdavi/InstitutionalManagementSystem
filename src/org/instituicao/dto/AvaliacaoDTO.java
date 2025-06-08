@@ -5,18 +5,18 @@ import org.instituicao.entity.AvaliacaoEntity;
 public class AvaliacaoDTO {
     private final int id;
     private final String descricao;
-    private final int idTurma;
+    private final TurmaDTO turma;
 
-    public AvaliacaoDTO(int id, String descricao, int idTurma) {
+    public AvaliacaoDTO(int id, String descricao, TurmaDTO turma) {
         this.id = id;
         this.descricao = descricao;
-        this.idTurma = idTurma;
+        this.turma = turma;
     }
 
     public AvaliacaoDTO(AvaliacaoEntity avaliacao) {
         this.id = avaliacao.getId();
         this.descricao = avaliacao.getDescricao();
-        this.idTurma = avaliacao.getTurma().getId();
+        this.turma = new TurmaDTO(avaliacao.getTurma());
     }
 
     public int getId() {
@@ -27,7 +27,12 @@ public class AvaliacaoDTO {
         return descricao;
     }
 
-    public int getIdTurma() {
-        return idTurma;
+    public TurmaDTO getTurma() {
+        return turma;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + descricao + " | " + turma.getDisciplina().getNome();
     }
 }

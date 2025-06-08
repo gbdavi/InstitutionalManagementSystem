@@ -4,6 +4,8 @@ import org.instituicao.dto.AvaliacaoDTO;
 import org.instituicao.dto.AvaliacaoCadastroDTO;
 import org.instituicao.service.AvaliacaoService;
 
+import java.util.List;
+
 public class AvaliacaoController {
     private final AvaliacaoService avaliacaoService;
 
@@ -41,5 +43,13 @@ public class AvaliacaoController {
      */
     public boolean avaliarEntrega(int idAvaliacao, int matriculaAluno, float nota) {
         return avaliacaoService.avaliarEntrega(idAvaliacao, matriculaAluno, nota);
+    }
+
+    /**
+     * Retorna as avaliações pendentes de um aluno na base de dados.
+     * Equivalente a rota /avaliacoes (byAluno e pendente via queryParams).
+     */
+    public List<AvaliacaoDTO> getAvaliacoesPendentesByAluno(int matriculaAluno) {
+        return avaliacaoService.getAvaliacoesPendentesByAluno(matriculaAluno);
     }
 }

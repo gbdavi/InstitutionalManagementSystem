@@ -3,6 +3,7 @@ package org.instituicao.repository;
 import org.instituicao.entity.AlunoEntity;
 import org.instituicao.entity.EntregaEntity;
 import org.instituicao.entity.TurmaEntity;
+import org.instituicao.type.StatusEntrega;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,9 +21,17 @@ public class EntregaRepository {
     }
 
     public List<EntregaEntity> getEntregasByTurmaAluno(int turmaId, int matriculaAluno) {
-        return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getTurma().getId() == turmaId && entregaEntity.getAluno().getMatricula() == matriculaAluno).toList();
+        return entregaEntities.stream()
+            .filter(entregaEntity -> entregaEntity.getAvaliacao().getTurma().getId() == turmaId && entregaEntity.getAluno().getMatricula() == matriculaAluno)
+            .toList();
     }
     public Optional<EntregaEntity> getEntregaByAvaliacaoAluno(int avaliacaoId, int matriculaAluno) {
         return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getId() == avaliacaoId && entregaEntity.getAluno().getMatricula() == matriculaAluno).findFirst();
+    }
+
+    public List<EntregaEntity> getEntregasPendentesByAluno(int matriculaAluno) {
+        return entregaEntities.stream()
+            .filter(entregaEntity -> entregaEntity.getStatus() == StatusEntrega.PENDENTE && entregaEntity.getAluno().getMatricula() == matriculaAluno)
+            .toList();
     }
 }

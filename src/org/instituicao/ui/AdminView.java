@@ -36,9 +36,9 @@ public class AdminView extends BaseView {
         }
     }
 
-    public void telaAcoes(FuncionarioDTO admin) {
+    public void telaAcoes(FuncionarioDTO adminDTO) {
         while (true) {
-            exibirCabecalho("Selecionar ação");
+            exibirCabecalho("Selecionar ação - Admin: " + adminDTO.getMatricula());
             System.out.print(
                     "1 - Cadastrar aluno"
                 + "\n2 - Cadastrar professor"
@@ -57,16 +57,16 @@ public class AdminView extends BaseView {
                     professorView.telaCadastro();
                 }
                 case "3" -> {
-                    cursoView.telaAdicionarAluno(admin.getIdInstituicao());
+                    cursoView.telaAdicionarAluno(adminDTO.getIdInstituicao());
                 }
                 case "4" -> {
-                    turmaView.telaAdicionarAluno(admin.getIdInstituicao());
+                    turmaView.telaAdicionarAluno(adminDTO.getIdInstituicao());
                 }
                 case "5" -> {
-                    turmaView.telaAdicionarProfessor(admin.getIdInstituicao());
+                    turmaView.telaAdicionarProfessor(adminDTO.getIdInstituicao());
                 }
                 case "6" -> {
-                    turmaView.telaAlterarStatus(admin.getIdInstituicao());
+                    turmaView.telaAlterarStatus(adminDTO.getIdInstituicao());
                 }
                 case "7" -> {
                     return;

@@ -4,6 +4,7 @@ import org.instituicao.controller.*;
 import org.instituicao.dto.*;
 import org.instituicao.type.StatusTurma;
 import org.instituicao.ui.AlunoView;
+import org.instituicao.ui.AvaliacaoView;
 import org.instituicao.ui.UI;
 import org.instituicao.util.data.DataUtils;
 
@@ -59,6 +60,9 @@ public class App {
         AvaliacaoDTO avaliacao1_a1 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A1 - Avaliação descritiva", turma1.getId()));
         AvaliacaoDTO avaliacao1_a2 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A2 - Avaliação objetiva", turma1.getId()));
         AvaliacaoDTO avaliacao1_a3 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Cadastro e Gerenciamento de Alunos", turma1.getId()));
+        AvaliacaoDTO avaliacao2_a1 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A1 - Avaliação descritiva", turma2.getId()));
+        AvaliacaoDTO avaliacao2_a2 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A2 - Avaliação objetiva", turma2.getId()));
+        AvaliacaoDTO avaliacao2_a3 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Diagramação de aplicação", turma2.getId()));
         AvaliacaoDTO avaliacao4_a1 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A1 - Avaliação descritiva", turma4.getId()));
         AvaliacaoDTO avaliacao4_a2 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A2 - Avaliação objetiva", turma4.getId()));
         AvaliacaoDTO avaliacao4_a3 = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Artigo escrito em Japonês", turma4.getId()));
@@ -88,10 +92,11 @@ public class App {
         System.out.printf("Professor - email: %s - senha: %s\n", professor.getEmailCorporativo(), professorCadastroDTO.getSenha());
         System.out.printf("Admin - email: %s - senha: %s\n", admin.getEmailCorporativo(), adminCadastroDTO.getSenha());
 
-        RelatorioAlunoDTO relatorio = alunoController.getRelatorio(100);
-        new AlunoView().exibirRelatorio(relatorio);
+//        RelatorioAlunoDTO relatorio = alunoController.getRelatorio(100);
+//        new AlunoView().exibirRelatorio(relatorio);
 
-//        UI ui = new UI();
-//        ui.run();
+
+        UI ui = new UI();
+        ui.run();
     }
 }
