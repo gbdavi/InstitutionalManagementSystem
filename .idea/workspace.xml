@@ -4,15 +4,7 @@
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/ProfessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/dto/TurmaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/dto/TurmaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/FuncionarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/TurmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/TurmaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/ProfessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/ProfessorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/CursoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/CursoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/TurmaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/TurmaView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

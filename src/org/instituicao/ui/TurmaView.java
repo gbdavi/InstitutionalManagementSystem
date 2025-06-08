@@ -6,6 +6,7 @@ import org.instituicao.controller.TurmaController;
 import org.instituicao.dto.AlunoDTO;
 import org.instituicao.dto.FuncionarioDTO;
 import org.instituicao.dto.TurmaDTO;
+import org.instituicao.type.StatusTurma;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class TurmaView extends BaseView {
 
     public void telaAdicionarProfessor(int idInstituicao) {
         try {
-            exibirCabecalho("Adicionar aluno na turma");
+            exibirCabecalho("Adicionar professor na turma");
 
             exibirInfo("Professores disponíveis:");
             List<FuncionarioDTO> professoresDisponiveis = professorController.getProfessores(idInstituicao);
@@ -82,6 +83,53 @@ public class TurmaView extends BaseView {
                 exibirInfo("Professor adicionado com sucesso.");
             } else {
                 exibirErro("Professor não pôde ser adicionado.");
+            }
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
+        }
+    }
+
+    public void telaAlterarStatus(int idInstituicao) {
+        try {
+            exibirCabecalho("Alterar status da turma");
+
+            exibirInfo("\n", "Turmas disponíveis:");
+            List<TurmaDTO> turmasDisponiveis = turmaController.getTurmasByInstituicao(idInstituicao);
+            turmasDisponiveis.forEach(System.out::println);
+
+            int idTurma = Integer.parseInt(solicitarCampo("\nId turma"));
+            if (turmasDisponiveis.stream().noneMatch(cursoDTO -> cursoDTO.getId() == idTurma)) {
+                exibirErro("Turma inválida!");
+                return;
+            }
+
+            exibirInfo("\n", "Status de turma disponíveis");
+            System.out.println("1 - Não iniciada" +
+                    "\n2 - Em andamento" +
+                    "\n3 - Concluída");
+
+            String nStatusSelecionado = solicitarCampo("\nNúmero status");
+            StatusTurma statusSelecionado;
+            switch (nStatusSelecionado) {
+                case "1" -> {
+                    statusSelecionado = StatusTurma.NAO_INICIADA;
+                }
+                case "2" -> {
+                    statusSelecionado = StatusTurma.EM_ANDAMENTO;
+                }
+                case "3" -> {
+                    statusSelecionado = StatusTurma.CONCLUIDA;
+                }
+                default -> {
+                    exibirErro("Status inválido!");
+                    return;
+                }
+            }
+
+            if (turmaController.alterarStatus(idTurma, statusSelecionado)) {
+                exibirInfo("Status alterado com sucesso.");
+            } else {
+                exibirErro("Status não pôde ser alterado.");
             }
         } catch (Exception e) {
             exibirErro("Valor inválido!");

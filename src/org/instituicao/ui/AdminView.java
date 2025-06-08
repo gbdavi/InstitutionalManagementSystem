@@ -45,7 +45,8 @@ public class AdminView extends BaseView {
                 + "\n3 - Adicionar aluno ao curso"
                 + "\n4 - Adicionar aluno a turma"
                 + "\n5 - Adicionar professor a turma"
-                + "\n6 - Voltar"
+                + "\n6 - Alterar status da turma"
+                + "\n7 - Voltar"
                 + "\n> "
             );
             switch (scanner.nextLine()) {
@@ -65,6 +66,9 @@ public class AdminView extends BaseView {
                     turmaView.telaAdicionarProfessor(admin.getIdInstituicao());
                 }
                 case "6" -> {
+                    turmaView.telaAlterarStatus(admin.getIdInstituicao());
+                }
+                case "7" -> {
                     return;
                 }
                 default -> exibirErro("Opção inválida.");
