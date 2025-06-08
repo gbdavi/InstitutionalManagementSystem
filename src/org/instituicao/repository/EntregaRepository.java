@@ -6,6 +6,7 @@ import org.instituicao.entity.TurmaEntity;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public class EntregaRepository {
     private static HashSet<EntregaEntity> entregaEntities = new HashSet<>();
@@ -20,5 +21,8 @@ public class EntregaRepository {
 
     public List<EntregaEntity> getEntregasByTurmaAluno(int turmaId, int matriculaAluno) {
         return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getTurma().getId() == turmaId && entregaEntity.getAluno().getMatricula() == matriculaAluno).toList();
+    }
+    public Optional<EntregaEntity> getEntregaByAvaliacaoAluno(int avaliacaoId, int matriculaAluno) {
+        return entregaEntities.stream().filter(entregaEntity -> entregaEntity.getAvaliacao().getId() == avaliacaoId && entregaEntity.getAluno().getMatricula() == matriculaAluno).findFirst();
     }
 }

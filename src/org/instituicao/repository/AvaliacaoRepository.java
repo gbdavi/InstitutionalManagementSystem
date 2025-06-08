@@ -5,6 +5,7 @@ import org.instituicao.entity.TurmaEntity;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public class AvaliacaoRepository {
     private static HashSet<AvaliacaoEntity> avaliacaoEntities = new HashSet<>();
@@ -17,7 +18,7 @@ public class AvaliacaoRepository {
         return avaliacaoEntities.remove(avaliacaoEntity);
     }
 
-    public List<AvaliacaoEntity> getAvaliacoesByTurma(TurmaEntity turmaEntity) {
-        return avaliacaoEntities.stream().filter(avaliacaoEntity -> avaliacaoEntity.getTurma().equals(turmaEntity)).toList();
+    public Optional<AvaliacaoEntity> getAvaliacaoById(int idAvaliacao) {
+        return avaliacaoEntities.stream().filter(avaliacaoEntity -> avaliacaoEntity.getId() == idAvaliacao).findFirst();
     }
 }

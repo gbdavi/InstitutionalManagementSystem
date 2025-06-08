@@ -20,4 +20,26 @@ public class AvaliacaoController {
     public AvaliacaoDTO cadastrar(AvaliacaoCadastroDTO avaliacaoCadastroDTO) {
         return avaliacaoService.cadastrar(avaliacaoCadastroDTO);
     }
+
+    /**
+     * Envia a resposta do aluno para a avaliação e define como entregue.
+     * Equivalente a rota /avaliacoes/{idAvaliacao}/entregar
+     * @param idAvaliacao id da avaliação.
+     * @param matriculaAluno matrícula do aluno.
+     * @param resposta resposta do aluno.
+     */
+    public boolean entregarAvaliacao(int idAvaliacao, int matriculaAluno, String resposta) {
+        return avaliacaoService.entregarAvaliacao(idAvaliacao, matriculaAluno, resposta);
+    }
+
+    /**
+     * Atribui nota para a avaliação entregue pelo aluno.
+     * Equivalente a rota /avaliacoes/{idAvaliacao}/avaliar
+     * @param idAvaliacao id da avaliação.
+     * @param matriculaAluno id do aluno.
+     * @param nota nota.
+     */
+    public boolean avaliarEntrega(int idAvaliacao, int matriculaAluno, float nota) {
+        return avaliacaoService.avaliarEntrega(idAvaliacao, matriculaAluno, nota);
+    }
 }

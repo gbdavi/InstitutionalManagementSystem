@@ -23,7 +23,7 @@ public class CursoController {
 
     /**
      * Adiciona aluno no curso.
-     * Equivalente a rota /cursos/{cursoId}/adicionar-aluno.
+     * Equivalente a rota /cursos/{idCurso}/adicionar-aluno.
      * @param idCurso id do curso.
      * @param matriculaAluno matrícula do aluno.
      */
@@ -33,7 +33,7 @@ public class CursoController {
 
     /**
      * Adiciona disciplina ao curso.
-     * Equivalente a rota /cursos/{cursoId}/adicionar-disciplina.
+     * Equivalente a rota /cursos/{idCurso}/adicionar-disciplina.
      * @param idCurso id do curso.
      * @param idDisciplina id da disciplina.
      */

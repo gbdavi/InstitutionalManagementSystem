@@ -75,11 +75,6 @@ public class TurmaEntity {
         ) {
             return false;
         }
-
-        for (AvaliacaoEntity avaliacaoEntity : avaliacaoEntities) {
-            avaliacaoEntity.adicionarEntrega(alunoEntity);
-        }
-
         return alunoEntities.add(alunoEntity) && alunoEntity.adicionarTurma(this);
     }
 

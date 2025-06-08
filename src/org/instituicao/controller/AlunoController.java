@@ -43,6 +43,12 @@ public class AlunoController {
         return alunoService.cadastrar(alunoCadastroDTO);
     }
 
+    /**
+     * Relatório completo de desempenho do aluno em disciplinas já iniciadas ou concluídas, agrupadas por curso e ordenadas pelo nome da disciplina.
+     * Equivalente a rota /alunos/{idAluno}/relatorio
+     * @param matriculaAluno matrícula do aluno.
+     * @return dados do relatório se aluno existir, caso contrário null.
+     */
     public RelatorioAlunoDTO getRelatorio(int matriculaAluno) {
         return alunoService.getRelatorio(matriculaAluno);
     }

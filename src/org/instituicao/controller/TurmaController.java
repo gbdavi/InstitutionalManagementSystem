@@ -24,7 +24,7 @@ public class TurmaController {
 
     /**
      * Adiciona aluno na turma.
-     * Equivalente a rota /turmas/{turmaId}/adicionar-aluno.
+     * Equivalente a rota /turmas/{idTurma}/adicionar-aluno.
      * @param idTurma id da turma.
      * @param matriculaAluno matrícula do aluno.
      */
@@ -34,7 +34,7 @@ public class TurmaController {
 
     /**
      * Adiciona professor na turma.
-     * Equivalente a rota /turmas/{turmaId}/adicionar-professor.
+     * Equivalente a rota /turmas/{idTurma}/adicionar-professor.
      * @param idTurma id da turma.
      * @param matriculaProfessor matrícula do professor.
      */
@@ -44,7 +44,7 @@ public class TurmaController {
 
     /**
      * Altera o status da turma.
-     * Equivalente a rota /turmas/{turmaId}/alterar-status.
+     * Equivalente a rota /turmas/{idTurma}/alterar-status.
      * @param idTurma id da turma.
      * @param statusTurma novo status.
      * @return

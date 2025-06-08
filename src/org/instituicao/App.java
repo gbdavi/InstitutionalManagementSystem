@@ -3,6 +3,7 @@ package org.instituicao;
 import org.instituicao.controller.*;
 import org.instituicao.dto.*;
 import org.instituicao.type.StatusTurma;
+import org.instituicao.ui.AlunoView;
 import org.instituicao.ui.UI;
 import org.instituicao.util.data.DataUtils;
 
@@ -29,27 +30,37 @@ public class App {
         TurmaDTO turma = turmaController.cadastrar(new TurmaCadastroDTO(disciplina.getId()));
         turmaController.alterarStatus(turma.getId(), StatusTurma.EM_ANDAMENTO);
 
-        avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Cadastro e Gerenciamento de Alunos", turma.getId()));
+        AvaliacaoDTO avaliacao = avaliacaoController.cadastrar(new AvaliacaoCadastroDTO("A3 - Cadastro e Gerenciamento de Alunos", turma.getId()));
 
         // Inicializar usuários pré-cadastrados
         AlunoCadastroDTO alunoCadastroDTO = new AlunoCadastroDTO("00012345678", "Davi Gramm Bauer", DataUtils.processarDataNascimento("27/09/2004"),"davi@mail.com", instituicao.getId(), "aluno123");
         AlunoDTO aluno = alunoController.cadastrar(alunoCadastroDTO);
         cursoController.adicionarAluno(curso.getId(), aluno.getMatricula());
         turmaController.adicionarAluno(turma.getId(), aluno.getMatricula());
+        avaliacaoController.entregarAvaliacao(avaliacao.getId(), aluno.getMatricula(), "Resposta exemplo da avaliação.");
 
         FuncionarioCadastroDTO professorCadastroDTO = new FuncionarioCadastroDTO("01234567890", "John Doe", DataUtils.processarDataNascimento("01/01/1980"), "john@mail.com", instituicao.getId(), "professor123");
         FuncionarioDTO professor = professorController.cadastrar(professorCadastroDTO);
         turmaController.adicionarProfessor(turma.getId(), professor.getMatricula());
+        avaliacaoController.avaliarEntrega(avaliacao.getId(), aluno.getMatricula(), 9.5f);
 
         FuncionarioCadastroDTO adminCadastroDTO = new FuncionarioCadastroDTO("98765432100", "root", DataUtils.processarDataNascimento("25/12/1975"), "root@mail.com", instituicao.getId(), "admin");
         FuncionarioDTO admin = adminController.cadastrar(adminCadastroDTO);
 
-        System.out.println("*** Logins pré-cadastrados ***");
-        System.out.printf("Aluno - email: %s - senha: %s\n", aluno.getEmailAcademico(), alunoCadastroDTO.getSenha());
-        System.out.printf("Professor - email: %s - senha: %s\n", professor.getEmailCorporativo(), professorCadastroDTO.getSenha());
-        System.out.printf("Admin - email: %s - senha: %s\n", admin.getEmailCorporativo(), adminCadastroDTO.getSenha());
 
-        UI ui = new UI();
-        ui.run();
+
+        turmaController.alterarStatus(turma.getId(), StatusTurma.CONCLUIDA);
+
+        RelatorioAlunoDTO relatorio = alunoController.getRelatorio(100);
+        new AlunoView().exibirRelatorio(relatorio);
+
+
+//        System.out.println("*** Logins pré-cadastrados ***");
+//        System.out.printf("Aluno - email: %s - senha: %s\n", aluno.getEmailAcademico(), alunoCadastroDTO.getSenha());
+//        System.out.printf("Professor - email: %s - senha: %s\n", professor.getEmailCorporativo(), professorCadastroDTO.getSenha());
+//        System.out.printf("Admin - email: %s - senha: %s\n", admin.getEmailCorporativo(), adminCadastroDTO.getSenha());
+//
+//        UI ui = new UI();
+//        ui.run();
     }
 }

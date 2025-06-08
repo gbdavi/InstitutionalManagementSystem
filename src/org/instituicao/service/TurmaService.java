@@ -3,10 +3,7 @@ package org.instituicao.service;
 import org.instituicao.dto.TurmaCadastroDTO;
 import org.instituicao.dto.TurmaDTO;
 import org.instituicao.entity.*;
-import org.instituicao.repository.AlunoRepository;
-import org.instituicao.repository.DisciplinaRepository;
-import org.instituicao.repository.FuncionarioRepository;
-import org.instituicao.repository.TurmaRepository;
+import org.instituicao.repository.*;
 import org.instituicao.type.StatusTurma;
 
 import java.util.Optional;
@@ -16,12 +13,14 @@ public class TurmaService {
     private final AlunoRepository alunoRepository;
     private final FuncionarioRepository funcionarioRepository;
     private final DisciplinaRepository disciplinaRepository;
+    private final EntregaRepository entregaRepository;
 
     public TurmaService() {
         this.turmaRepository = new TurmaRepository();
         this.alunoRepository = new AlunoRepository();
         this.funcionarioRepository = new FuncionarioRepository();
         this.disciplinaRepository = new DisciplinaRepository();
+        this.entregaRepository = new EntregaRepository();
     }
 
     /**
@@ -50,7 +49,12 @@ public class TurmaService {
         Optional<AlunoEntity> aluno = alunoRepository.getAlunoByMatricula(matriculaAluno);
 
         if (turma.isPresent() && aluno.isPresent()) {
-            return turma.get().adicionarAluno(aluno.get());
+            if (turma.get().adicionarAluno(aluno.get())) {
+                for (AvaliacaoEntity avaliacaoEntity : turma.get().getAvaliacoes()) {
+                    entregaRepository.adicionarEntrega(new EntregaEntity(aluno.get(), avaliacaoEntity));
+                }
+                return true;
+            }
         }
         return false;
     }
