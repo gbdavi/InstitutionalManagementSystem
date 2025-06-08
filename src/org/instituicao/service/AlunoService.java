@@ -111,4 +111,13 @@ public class AlunoService {
         }
         return 0;
     }
+
+    /**
+     * @return lista de alunos cadastrados na instituição no banco de dados.
+     */
+    public List<AlunoDTO> getAlunos(int idInstituicao) {
+        return alunoRepository.getAlunosByInstituicao(idInstituicao).stream()
+                .map(AlunoDTO::new)
+                .toList();
+    }
 }

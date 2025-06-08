@@ -3,6 +3,7 @@ package org.instituicao.repository;
 import org.instituicao.entity.AlunoEntity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 public class AlunoRepository {
@@ -26,6 +27,12 @@ public class AlunoRepository {
         return alunoEntities.stream()
                 .filter(alunoEntity -> alunoEntity.getMatricula() == matriculaAluno)
                 .findFirst();
+    }
+
+    public List<AlunoEntity> getAlunosByInstituicao(int instituicao) {
+        return alunoEntities.stream()
+                .filter(alunoEntity -> alunoEntity.getInstituicaoEntity().getId() == instituicao)
+                .toList();
     }
 
 }

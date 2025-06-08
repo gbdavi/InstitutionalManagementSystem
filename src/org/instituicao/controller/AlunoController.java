@@ -53,4 +53,12 @@ public class AlunoController {
         return alunoService.getRelatorio(matriculaAluno);
     }
 
+    /**
+     * Retorna todos os alunos da instituicao cadastrados na base de dados.
+     * Equivalente a rota /alunos.
+     */
+    public List<AlunoDTO> getAlunos(int idInstituicao) {
+        return alunoService.getAlunos(idInstituicao);
+    }
+
 }

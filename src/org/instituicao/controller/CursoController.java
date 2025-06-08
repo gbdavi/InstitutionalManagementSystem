@@ -4,6 +4,8 @@ import org.instituicao.dto.CursoCadastroDTO;
 import org.instituicao.dto.CursoDTO;
 import org.instituicao.repository.CursoService;
 
+import java.util.List;
+
 public class CursoController {
     private final CursoService cursoService;
 
@@ -39,5 +41,13 @@ public class CursoController {
      */
     public boolean adicionarDisciplina(int idCurso, int idDisciplina) {
         return cursoService.adicionarDisciplina(idCurso, idDisciplina);
+    }
+
+    /**
+     * Retorna todos os cursos da instituicao cadastrados na base de dados.
+     * Equivalente a rota /cursos.
+     */
+    public List<CursoDTO> getCursos(int idInstituicao) {
+        return cursoService.getCursos(idInstituicao);
     }
 }

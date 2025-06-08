@@ -7,6 +7,7 @@ import org.instituicao.entity.CursoEntity;
 import org.instituicao.entity.DisciplinaEntity;
 import org.instituicao.entity.InstituicaoEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public class CursoService {
@@ -65,5 +66,14 @@ public class CursoService {
             return curso.get().adicionarDisciplina(disciplina.get());
         }
         return false;
+    }
+
+    /**
+     * @return lista de cursos cadastrados na instituição no banco de dados.
+     */
+    public List<CursoDTO> getCursos(int idInstituicao) {
+        return cursoRepository.getCursosByInstituicao(idInstituicao).stream()
+                .map(CursoDTO::new)
+                .toList();
     }
 }

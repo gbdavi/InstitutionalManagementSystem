@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/instituicao/ui/CursoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/AvaliacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/AvaliacaoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/CursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/CursoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AvaliacaoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AvaliacaoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/AvaliacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/AvaliacaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/EntregaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/EntregaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/AvaliacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/dto/CursoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/dto/CursoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/CursoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/CursoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/CursoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/CursoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/AlunoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/AlunoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

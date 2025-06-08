@@ -30,4 +30,9 @@ public class CursoDTO {
     public int getIdInstituicao() {
         return idInstituicao;
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + nome;
+    }
 }

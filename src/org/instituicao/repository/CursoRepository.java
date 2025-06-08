@@ -18,8 +18,8 @@ public class CursoRepository {
         return cursoEntities.remove(cursoEntity);
     }
 
-    public List<CursoEntity> getCursosByInstituicao(InstituicaoEntity instituicao) {
-        return cursoEntities.stream().filter(curso -> curso.getInstituicaoEntity().equals(instituicao)).toList();
+    public List<CursoEntity> getCursosByInstituicao(int idInstituicao) {
+        return cursoEntities.stream().filter(curso -> curso.getInstituicaoEntity().getId() == idInstituicao).toList();
     }
 
     public Optional<CursoEntity> getCursoById(int idCurso) {
