@@ -56,4 +56,16 @@ public class FuncionarioEntity extends PessoaEntity {
     public int hashCode() {
         return Objects.hash(matricula);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FuncionarioEntity other = (FuncionarioEntity) obj;
+		return Objects.equals(matricula, other.getMatricula());
+    }
 }
