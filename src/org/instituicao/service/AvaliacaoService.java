@@ -69,7 +69,7 @@ public class AvaliacaoService {
      */
     public boolean avaliarEntrega(int idAvaliacao, int matriculaAluno, float nota) {
         Optional<EntregaEntity> entrega = entregaRepository.getEntregaByAvaliacaoAluno(idAvaliacao, matriculaAluno);
-        if (entrega.isPresent() && entrega.get().getStatus() == StatusEntrega.ENTREGUE) {
+        if (entrega.isPresent() && entrega.get().getStatus() != StatusEntrega.PENDENTE) {
             entrega.get().setNota(nota);
             return true;
         }
@@ -84,5 +84,4 @@ public class AvaliacaoService {
             .map(entregaEntity -> new AvaliacaoDTO(entregaEntity.getAvaliacao()))
             .toList();
     }
-
 }

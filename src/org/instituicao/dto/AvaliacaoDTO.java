@@ -2,6 +2,8 @@ package org.instituicao.dto;
 
 import org.instituicao.entity.AvaliacaoEntity;
 
+import java.util.Objects;
+
 public class AvaliacaoDTO {
     private final int id;
     private final String descricao;
@@ -34,5 +36,22 @@ public class AvaliacaoDTO {
     @Override
     public String toString() {
         return id + " - " + descricao + " | " + turma.getDisciplina().getNome();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AvaliacaoDTO other = (AvaliacaoDTO) obj;
+		return Objects.equals(id, other.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

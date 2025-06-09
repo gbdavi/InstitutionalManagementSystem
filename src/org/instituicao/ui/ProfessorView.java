@@ -12,10 +12,12 @@ import java.util.List;
 public class ProfessorView extends BaseView {
     private final ProfessorController professorController;
     private final InstituicaoController instituicaoController;
+    private final AvaliacaoView avaliacaoView;
 
     public ProfessorView() {
         this.professorController = new ProfessorController();
         this.instituicaoController = new InstituicaoController();
+        this.avaliacaoView = new AvaliacaoView();
     }
 
     /**
@@ -28,7 +30,7 @@ public class ProfessorView extends BaseView {
                 solicitarCampo("Senha"));
         if (professor != null) {
             System.out.println("\nBem vindo(a) " + professor.getNome() + "!");
-
+            menuProfessor(professor);
         } else {
             exibirErro("Credenciais inválidas.");
         }
@@ -82,6 +84,26 @@ public class ProfessorView extends BaseView {
             }
         } catch (Exception e) {
             exibirErro("Valor inválido!");
+        }
+    }
+
+    private void menuProfessor(FuncionarioDTO professorDTO) {
+        while (true) {
+            exibirCabecalho("Selecionar ação - Professor: " + professorDTO.getMatricula());
+            System.out.print(
+                    "1 - Avaliar entregas"
+                + "\n2 - Voltar"
+                + "\n> "
+            );
+            switch (scanner.nextLine()) {
+                case "1" -> {
+                    avaliacaoView.telaAvaliarEntrega(professorDTO.getMatricula());
+                }
+                case "2" -> {
+                    return;
+                }
+                default -> exibirErro("Opção inválida.");
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
 package org.instituicao.repository;
 
-import org.instituicao.entity.AlunoEntity;
 import org.instituicao.entity.EntregaEntity;
-import org.instituicao.entity.TurmaEntity;
 import org.instituicao.type.StatusEntrega;
 
 import java.util.HashSet;
@@ -32,6 +30,12 @@ public class EntregaRepository {
     public List<EntregaEntity> getEntregasPendentesByAluno(int matriculaAluno) {
         return entregaEntities.stream()
             .filter(entregaEntity -> entregaEntity.getStatus() == StatusEntrega.PENDENTE && entregaEntity.getAluno().getMatricula() == matriculaAluno)
+            .toList();
+    }
+
+    public List<EntregaEntity> getEntregasPendentesByProfessor(int matriculaProfessor) {
+        return entregaEntities.stream()
+            .filter(entregaEntity -> entregaEntity.getStatus() == StatusEntrega.ENTREGUE && entregaEntity.getAvaliacao().getTurma().getProfessores().stream().anyMatch(professorEntity -> professorEntity.getMatricula() == matriculaProfessor))
             .toList();
     }
 }

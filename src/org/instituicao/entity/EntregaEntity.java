@@ -57,6 +57,7 @@ public class EntregaEntity {
     public boolean setNota(float nota) {
         if (status == StatusEntrega.ENTREGUE && nota >= 0 && nota <= 10) {
             this.nota = nota;
+            this.status = StatusEntrega.AVALIADO;
             return true;
         }
         return false;
