@@ -87,6 +87,9 @@ public class AlunoView extends BaseView {
         }
     }
 
+    /**
+     * Menu principal do aluno.
+     */
     private void menuAluno(AlunoDTO alunoDTO) {
         while (true) {
             exibirCabecalho("Selecionar ação - Aluno: " + alunoDTO.getMatricula());
@@ -131,4 +134,6 @@ public class AlunoView extends BaseView {
             }
         }
     }
+
+
 }

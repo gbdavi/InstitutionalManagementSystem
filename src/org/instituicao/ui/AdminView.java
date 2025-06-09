@@ -1,11 +1,17 @@
 package org.instituicao.ui;
 
 import org.instituicao.controller.AdminController;
+import org.instituicao.controller.AlunoController;
+import org.instituicao.dto.AlunoDTO;
 import org.instituicao.dto.FuncionarioDTO;
+import org.instituicao.dto.RelatorioAlunoDTO;
+
+import java.util.List;
 
 public class AdminView extends BaseView {
 
     private final AdminController adminController;
+    private final AlunoController alunoController;
     private final AlunoView alunoView;
     private final ProfessorView professorView;
     private final CursoView cursoView;
@@ -13,6 +19,7 @@ public class AdminView extends BaseView {
 
     public AdminView() {
         this.adminController = new AdminController();
+        this.alunoController = new AlunoController();
         this.alunoView = new AlunoView();
         this.professorView = new ProfessorView();
         this.cursoView = new CursoView();
@@ -68,6 +75,14 @@ public class AdminView extends BaseView {
                 }
                 case "6" -> {
                     turmaView.telaAlterarStatus(adminDTO.getIdInstituicao());
+                }
+                case "7" -> {
+                    List<AlunoDTO> alunos = alunoController.getAlunos(adminDTO.getIdInstituicao());
+                    alunos.forEach(aluno -> {
+                        alunoView.exibirRelatorio(
+                            alunoController.getRelatorio(aluno.getMatricula())
+                        );
+                    });
                 }
                 case "8" -> {
                     return;
