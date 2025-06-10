@@ -1,11 +1,11 @@
 package org.instituicao.ui;
 
 import org.instituicao.controller.AlunoController;
-import org.instituicao.controller.AvaliacaoController;
 import org.instituicao.controller.InstituicaoController;
 import org.instituicao.dto.*;
 import org.instituicao.util.data.DataUtils;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -88,6 +88,56 @@ public class AlunoView extends BaseView {
     }
 
     /**
+     * Tela para alterar dados de aluno na base de dados.
+     */
+    public void telaAlterarDadosPessoais(AlunoDTO alunoDTO) {
+        try {
+            exibirCabecalho("Alterar dados pessoais do aluno");
+
+            exibirInfo("\n", "Deixe vazio os valores que não deseja alterar.");
+
+            String cpfInput = solicitarCampo("Cpf");
+            String cpf = !cpfInput.equals("") ? cpfInput : alunoDTO.getCpf();
+
+            String nomeInput = solicitarCampo("Nome");
+            String nome = !nomeInput.equals("") ? nomeInput : alunoDTO.getNome();
+
+            String dataNascimentoInput = solicitarCampo("Data Nascimento (dd/MM/yyyy)");
+            LocalDate dataNascimento = !dataNascimentoInput.equals("") ? DataUtils.processarDataNascimento(dataNascimentoInput) : alunoDTO.getDataNascimento();
+
+            String emailInput = solicitarCampo("Email");
+            String email = !emailInput.equals("") ? emailInput : alunoDTO.getEmail();
+
+            PessoaDTO dadosAlterados = new PessoaDTO(cpf, nome, dataNascimento, email);
+
+
+            exibirInfo("\n", "Revisar dados.");
+            System.out.println(dadosAlterados);
+
+            while (true) {
+                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
+                switch (dadosConferem) {
+                    case "SIM" -> {
+                        if (alunoController.alterarDadosPessoais(alunoDTO.getMatricula(), dadosAlterados)) {
+                            exibirInfo("Dados alterados com sucesso.");
+                        } else {
+                            exibirErro("Dados não puderam ser alterados.");
+                        }
+                        return;
+                    }
+                    case "NÃO" -> {
+                        exibirInfo("Cadastro cancelado.");
+                        return;
+                    }
+                    default -> exibirErro("Valor inválido!");
+                }
+            }
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
+        }
+    }
+
+    /**
      * Menu principal do aluno.
      */
     private void menuAluno(AlunoDTO alunoDTO) {
@@ -135,5 +185,22 @@ public class AlunoView extends BaseView {
         }
     }
 
-
+    /**
+     * Solicita dados do aluno a partir da matrícula.
+     * @return retorna aluno se encontrado, caso contrário null.
+     */
+    public AlunoDTO solicitarAluno() {
+        try {
+            int matriculaAluno = Integer.parseInt(solicitarCampo("\nMatrícula aluno"));
+            AlunoDTO aluno = alunoController.getAluno(matriculaAluno);
+            if (aluno == null) {
+                exibirErro("Aluno não encontrado.");
+                return null;
+            }
+            return aluno;
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
+            return null;
+        }
+    }
 }

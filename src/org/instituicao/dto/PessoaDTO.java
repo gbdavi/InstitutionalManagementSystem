@@ -30,4 +30,12 @@ public class PessoaDTO {
     public String getEmail() {
         return email;
     }
+
+    @Override
+    public String toString() {
+        return  "Cpf: " + getCpf()
+            + "\nNome: " + getNome()
+            + "\nData Nascimento: " + getDataNascimento()
+            + "\nEmail: " + getEmail();
+    }
 }

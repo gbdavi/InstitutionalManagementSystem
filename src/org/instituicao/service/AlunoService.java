@@ -120,4 +120,33 @@ public class AlunoService {
                 .map(AlunoDTO::new)
                 .toList();
     }
+
+    /**
+     * Atualiza os dados pessoais do aluno.
+     * @param matricula matrícula do aluno.
+     * @param dadosAlterados dados a serem atualizados.
+     */
+    public boolean alterarDadosPessoais(int matricula, PessoaDTO dadosAlterados) {
+        Optional<AlunoEntity> aluno = this.alunoRepository.getAlunoByMatricula(matricula);
+        if (aluno.isPresent()) {
+            aluno.get().setCpf(dadosAlterados.getCpf());
+            aluno.get().setNome(dadosAlterados.getNome());
+            aluno.get().setDataNascimento(dadosAlterados.getDataNascimento());
+            aluno.get().setEmail(dadosAlterados.getEmail());
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Retorna dados do aluno cadastrado na base de dados.
+     * @param matriculaAluno matrícula do aluno.
+     */
+    public AlunoDTO getAluno(int matriculaAluno) {
+        Optional<AlunoEntity> aluno = this.alunoRepository.getAlunoByMatricula(matriculaAluno);
+        if (aluno.isPresent()) {
+            return new AlunoDTO(aluno.get());
+        }
+        return null;
+    }
 }

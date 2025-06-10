@@ -43,8 +43,6 @@ public class AvaliacaoView extends BaseView {
         } catch (Exception e) {
             exibirErro("Valor inválido!");
         }
-
-
     }
 
     public void telaAvaliarEntrega(int matriculaProfessor) {

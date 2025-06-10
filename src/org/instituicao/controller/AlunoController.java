@@ -1,9 +1,6 @@
 package org.instituicao.controller;
 
-import org.instituicao.dto.AlunoCadastroDTO;
-import org.instituicao.dto.AlunoDTO;
-import org.instituicao.dto.RelatorioAlunoDTO;
-import org.instituicao.dto.RelatorioCursoDTO;
+import org.instituicao.dto.*;
 import org.instituicao.service.AlunoService;
 
 import java.util.List;
@@ -45,7 +42,7 @@ public class AlunoController {
 
     /**
      * Relatório completo de desempenho do aluno em disciplinas já iniciadas ou concluídas, agrupadas por curso e ordenadas pelo nome da disciplina.
-     * Equivalente a rota /alunos/{idAluno}/relatorio
+     * Equivalente a rota /alunos/{matriculaAluno}/relatorio
      * @param matriculaAluno matrícula do aluno.
      * @return dados do relatório se aluno existir, caso contrário null.
      */
@@ -61,4 +58,22 @@ public class AlunoController {
         return alunoService.getAlunos(idInstituicao);
     }
 
+    /**
+     * Atualiza os dados pessoais do aluno.
+     * Equivalente a rota /alunos/{matriculaAluno}/alterar-dados.
+     * @param matricula matrícula do aluno.
+     * @param dadosPessoaisAlterados dados a serem atualizados.
+     */
+    public boolean alterarDadosPessoais(int matricula, PessoaDTO dadosAlterados) {
+        return this.alunoService.alterarDadosPessoais(matricula, dadosAlterados);
+    }
+
+    /**
+     * Retorna dados do aluno cadastrado na base de dados.
+     * Equivalente a rota /alunos/{matriculaAluno}
+     * @param matriculaAluno matrícula do aluno.
+     */
+    public AlunoDTO getAluno(int matriculaAluno) {
+        return this.alunoService.getAluno(matriculaAluno);
+    }
 }

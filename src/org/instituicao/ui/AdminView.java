@@ -54,7 +54,8 @@ public class AdminView extends BaseView {
                 + "\n5 - Adicionar professor a turma"
                 + "\n6 - Alterar status da turma"
                 + "\n7 - Listar relatório de todos os alunos da instituição"
-                + "\n8 - Voltar"
+                + "\n8 - Alterar dados pessoais do aluno"
+                + "\n9 - Voltar"
                 + "\n> "
             );
             switch (scanner.nextLine()) {
@@ -85,6 +86,15 @@ public class AdminView extends BaseView {
                     });
                 }
                 case "8" -> {
+                    exibirInfo("\n", "Alunos disponíveis");
+                    List<AlunoDTO> alunos = alunoController.getAlunos(adminDTO.getIdInstituicao());
+                    alunos.forEach(System.out::println);
+                    AlunoDTO aluno = alunoView.solicitarAluno();
+                    if (aluno != null) {
+                        alunoView.telaAlterarDadosPessoais(aluno);
+                    }
+                }
+                case "9" -> {
                     return;
                 }
                 default -> exibirErro("Opção inválida.");
