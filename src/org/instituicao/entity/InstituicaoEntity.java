@@ -48,11 +48,19 @@ public class InstituicaoEntity {
         this.aliasAcademico = aliasAcademico;
     }
 
+    /**
+     * Gera o hashcode da instância.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+    /**
+     * Compara a instância atual com outra fornecida.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

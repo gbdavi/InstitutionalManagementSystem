@@ -40,13 +40,16 @@ public class TurmaEntity {
         return disciplinaEntity;
     }
 
+    /**
+     * Professores adicionados à turma.
+     * @return set não modificável de professores.
+     */
     public Set<ProfessorEntity> getProfessores() {
         return Collections.unmodifiableSet(professorEntities);
     }
 
     /**
      * Adiciona o professor na turma e adiciona a turma no set de turmas do professor.
-     * @param professorEntity
      */
     public boolean adicionarProfessor(ProfessorEntity professorEntity) {
         return professorEntity != null && professorEntities.add(professorEntity) && professorEntity.adicionarTurma(this);
@@ -54,12 +57,15 @@ public class TurmaEntity {
 
     /**
      * Remove o professor da turma e remove a turma do set de turmas do professor.
-     * @param professorEntity
      */
     public boolean removerProfessor(ProfessorEntity professorEntity) {
         return professorEntities.remove(professorEntity) && professorEntity.removerTurma(this);
     }
 
+    /**
+     * Alunos adicionados à turma.
+     * @return set não modificável de alunos.
+     */
     public Set<AlunoEntity> getAlunos() {
         return Collections.unmodifiableSet(alunoEntities);
     }
@@ -86,14 +92,25 @@ public class TurmaEntity {
         return alunoEntities.remove(alunoEntity) && alunoEntity.removerTurma(this);
     }
 
+    /**
+     * Avaliações cadastradas na turma.
+     * @return set não modificável de avaliações.
+     */
     public Set<AvaliacaoEntity> getAvaliacoes() {
         return Collections.unmodifiableSet(avaliacaoEntities);
     }
 
+
+    /**
+     * Adiciona a avaliação no set de avaliações.
+     */
     public boolean adicionarAvaliacao(AvaliacaoEntity avaliacaoEntity) {
         return avaliacaoEntities.add(avaliacaoEntity);
     }
 
+    /**
+     * Remove a avaliação do set de avaliações.
+     */
     public boolean removerAvaliacao(AvaliacaoEntity avaliacaoEntity) {
         return avaliacaoEntities.remove(avaliacaoEntity);
     }
@@ -103,11 +120,19 @@ public class TurmaEntity {
         return id + " - " + disciplinaEntity;
     }
 
+    /**
+     * Gera o hashcode da instância.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+    /**
+     * Compara a instância atual com outra fornecida.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

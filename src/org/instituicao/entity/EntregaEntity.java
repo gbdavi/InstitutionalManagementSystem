@@ -54,8 +54,11 @@ public class EntregaEntity {
         return nota;
     }
 
+    /**
+     * Verifica se a nota é válida, atribui a nota e altera o status para AVALIADO.
+     */
     public boolean setNota(float nota) {
-        if (status == StatusEntrega.ENTREGUE && nota >= 0 && nota <= 10) {
+        if (status != StatusEntrega.PENDENTE && nota >= 0 && nota <= 10) {
             this.nota = nota;
             this.status = StatusEntrega.AVALIADO;
             return true;
@@ -63,11 +66,19 @@ public class EntregaEntity {
         return false;
     }
 
+    /**
+     * Gera o hashcode da instância.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+    /**
+     * Compara a instância atual com outra fornecida.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

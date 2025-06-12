@@ -12,13 +12,16 @@ public class ProfessorEntity extends FuncionarioEntity {
         super(cpf, nome, dataNascimento, email, instituicaoEntity);
     }
 
+    /**
+     * Turmas que o professor foi adicionado.
+     * @return set não modificável de turmas.
+     */
     public Set<TurmaEntity> getTurmas() {
         return Collections.unmodifiableSet(turmaEntities);
     }
 
     /**
      * Adiciona a turma no set de turmas caso o professor já tenha sido adicionado no set de professores da turma.
-     * @param turmaEntity
      */
     public boolean adicionarTurma(TurmaEntity turmaEntity) {
         if (turmaEntity.getProfessores().stream().noneMatch(professor -> professor == this)) {
@@ -29,7 +32,6 @@ public class ProfessorEntity extends FuncionarioEntity {
 
     /**
      * Remove a turma do set de turmas caso o professor já tenha sido removido do set de professores da turma.
-     * @param turmaEntity
      */
     public boolean removerTurma(TurmaEntity turmaEntity) {
         if (turmaEntity.getProfessores().stream().anyMatch(professor -> professor == this)) {

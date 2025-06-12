@@ -3,10 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/ProfessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AdminEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AdminEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AlunoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AlunoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/AvaliacaoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/AvaliacaoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/CursoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/CursoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/DisciplinaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/DisciplinaEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/EntregaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/EntregaEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/FuncionarioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/FuncionarioEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/InstituicaoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/InstituicaoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/PessoaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/PessoaEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/ProfessorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/ProfessorEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/entity/TurmaEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

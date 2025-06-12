@@ -34,14 +34,24 @@ public class CursoEntity {
         this.nome = nome;
     }
 
+    /**
+     * Disciplinas adicionadas ao curso.
+     * @return set não modificável de disciplinas.
+     */
     public Set<DisciplinaEntity> getDisciplinas() {
         return Collections.unmodifiableSet(disciplinaEntities);
     }
 
+    /**
+     * Adiciona a disciplina no set de disciplinas.
+     */
     public boolean adicionarDisciplina(DisciplinaEntity disciplinaEntity) {
         return disciplinaEntities.add(disciplinaEntity);
     }
 
+    /**
+     * Remove a disciplina do set de disciplinas.
+     */
     public boolean removerDisciplina(DisciplinaEntity disciplinaEntity) {
         return disciplinaEntities.remove(disciplinaEntity);
     }
@@ -55,11 +65,19 @@ public class CursoEntity {
         return id + " - " + nome;
     }
 
+    /**
+     * Gera o hashcode da instância.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+    /**
+     * Compara a instância atual com outra fornecida.
+     * Obs.: necessário para utilização do HashSet.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

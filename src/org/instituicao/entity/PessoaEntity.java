@@ -1,7 +1,6 @@
 package org.instituicao.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class PessoaEntity {
     private String cpf;
@@ -46,10 +45,5 @@ public class PessoaEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cpf);
     }
 }
