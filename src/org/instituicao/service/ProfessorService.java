@@ -23,14 +23,14 @@ public class ProfessorService {
     }
 
     /**
-     * Autentica o professor cadastrado
-     * @param emailCorporativo email corporativo do professor
-     * @param senha senha do professor
-     * @return instancia do professor se autenticado com sucesso, caso contrario null
+     * Autentica o professor cadastrado.
+     * @param emailCorporativo email corporativo do professor.
+     * @param senha senha do professor.
+     * @return instancia do professor se autenticado com sucesso, caso contrario null.
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
         Optional<FuncionarioEntity> funcionario = funcionarioRepository.getFuncionarioByEmailCorporativo(emailCorporativo);
-        if (funcionario.isPresent() && funcionario.get().verificarSenha(senha) && funcionario.get() instanceof ProfessorEntity) {
+        if (funcionario.isPresent() && funcionario.get() instanceof ProfessorEntity && funcionario.get().verificarSenha(senha)) {
             return new FuncionarioDTO(funcionario.get());
         }
         return null;
@@ -43,11 +43,16 @@ public class ProfessorService {
      */
     public FuncionarioDTO cadastrar(FuncionarioCadastroDTO professorCadastroDTO) {
         Optional<InstituicaoEntity> instituicao = instituicaoRepository.getInstituicaoById(professorCadastroDTO.getIdInstituicao());
-        if (!instituicao.isPresent()) {
+        if (instituicao.isEmpty()) {
             return null;
         }
 
-        ProfessorEntity professor = new ProfessorEntity(professorCadastroDTO.getCpf(), professorCadastroDTO.getNome(), professorCadastroDTO.getDataNascimento(), professorCadastroDTO.getEmail(), instituicao.get());
+        ProfessorEntity professor = new ProfessorEntity(
+                professorCadastroDTO.getCpf(),
+                professorCadastroDTO.getNome(),
+                professorCadastroDTO.getDataNascimento(),
+                professorCadastroDTO.getEmail(),
+                instituicao.get());
         professor.setSenha(professorCadastroDTO.getSenha());
         instituicaoService.atribuirDadosCorporativos(instituicao.get(), professor);
 
@@ -58,12 +63,12 @@ public class ProfessorService {
     }
 
     /**
-     * Retorna todos os professores da instituicao cadastrados no banco de dados.
+     * Busca todos os professores cadastrados na instituicao.
      */
     public List<FuncionarioDTO> getProfessores(int idInstituicao) {
         return funcionarioRepository.getFuncionarioByInstituicao(idInstituicao).stream()
-            .filter(funcionario -> funcionario instanceof ProfessorEntity)
-            .map(FuncionarioDTO::new)
-            .toList();
+                .filter(funcionario -> funcionario instanceof ProfessorEntity)
+                .map(FuncionarioDTO::new)
+                .toList();
     }
 }

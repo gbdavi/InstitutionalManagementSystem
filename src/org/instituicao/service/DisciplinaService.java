@@ -26,7 +26,10 @@ public class DisciplinaService {
     public DisciplinaDTO cadastrar(DisciplinaCadastroDTO disciplinaCadastroDTO) {
         Optional<InstituicaoEntity> instituicao = instituicaoRepository.getInstituicaoById(disciplinaCadastroDTO.getIdInstituicao());
         if (instituicao.isPresent()) {
-            DisciplinaEntity disciplina = new DisciplinaEntity(disciplinaCadastroDTO.getNome(), disciplinaCadastroDTO.getEmenta(), instituicao.get());
+            DisciplinaEntity disciplina = new DisciplinaEntity(
+                    disciplinaCadastroDTO.getNome(),
+                    disciplinaCadastroDTO.getEmenta(),
+                    instituicao.get());
             if (disciplinaRepository.adicionarDisciplina(disciplina)) {
                 return new DisciplinaDTO(disciplina);
             }

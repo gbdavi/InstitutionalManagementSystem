@@ -41,7 +41,7 @@ public class TurmaService {
     }
 
     /**
-     * Adiciona aluno na turma.
+     * Adiciona aluno na turma e atribui a ele as entregas das avaliações já criadas na turma.
      * @param idTurma id da turma.
      * @param matriculaAluno matrícula do aluno.
      */
@@ -92,7 +92,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna todas as turmas no banco de dados disponíveis para cadastro do aluno.
+     * Retorna todas as turmas disponíveis para adicionar o aluno.
      */
     public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
         Optional<AlunoEntity> aluno = alunoRepository.getAlunoByMatricula(matriculaAluno);
@@ -105,7 +105,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna todas as turmas da instituição no banco de dados.
+     * Retorna todas as turmas da instituição.
      */
     public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
         return turmaRepository.getTurmasByInstituicao(idInstituicao).stream()
@@ -114,7 +114,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna as turmas ministradas pelo professor no banco de dados.
+     * Retorna as turmas ministradas pelo professor.
      */
     public List<TurmaDTO> getTurmasByProfessor(int matriculaProfessor) {
         return turmaRepository.getTurmasByProfessor(matriculaProfessor).stream()

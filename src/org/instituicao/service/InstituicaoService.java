@@ -26,7 +26,10 @@ public class InstituicaoService {
      * @return dados da instituição se cadastrada com sucesso, caso contrário null.
      */
     public InstituicaoDTO cadastrar(InstituicaoCadastroDTO instituicaoCadastroDTO) {
-        InstituicaoEntity instituicao = new InstituicaoEntity(instituicaoCadastroDTO.getNome(), instituicaoCadastroDTO.getAliasCorporativo(), instituicaoCadastroDTO.getAliasAcademico());
+        InstituicaoEntity instituicao = new InstituicaoEntity(
+                instituicaoCadastroDTO.getNome(),
+                instituicaoCadastroDTO.getAliasCorporativo(),
+                instituicaoCadastroDTO.getAliasAcademico());
         if (instituicaoRepository.adicionarInstituicao(instituicao)) {
             return new InstituicaoDTO(instituicao);
         }
@@ -60,7 +63,7 @@ public class InstituicaoService {
     }
 
     /**
-     * @return lista de instituições cadastradas no banco de dados.
+     * Busca instituições cadastradas no banco de dados.
      */
     public List<InstituicaoDTO> getInstituicoes() {
         return instituicaoRepository.getInstituicoes().stream()

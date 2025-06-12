@@ -42,7 +42,7 @@ public class FuncionarioRepository {
     }
 
     /**
-     * Busca disciplinas no repositório local através do id da instituição.
+     * Busca funcionários no repositório local através do id da instituição.
      */
     public List<FuncionarioEntity> getFuncionarioByInstituicao(int idInstituicao) {
         return funcionarioEntities.stream()

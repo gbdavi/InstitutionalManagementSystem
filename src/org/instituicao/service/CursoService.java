@@ -35,7 +35,9 @@ public class CursoService {
     public CursoDTO cadastrar(CursoCadastroDTO cursoCadastroDTO) {
         Optional<InstituicaoEntity> instituicao = instituicaoRepository.getInstituicaoById(cursoCadastroDTO.getIdInstituicao());
         if (instituicao.isPresent()) {
-            CursoEntity curso = new CursoEntity(cursoCadastroDTO.getNome(), instituicao.get());
+            CursoEntity curso = new CursoEntity(
+                    cursoCadastroDTO.getNome(),
+                    instituicao.get());
             if (cursoRepository.adicionarCurso(curso)) {
                 return new CursoDTO(curso);
             }
@@ -44,7 +46,7 @@ public class CursoService {
     }
 
     /**
-     * Adiciona aluno no curso.
+     * Adiciona aluno ao curso.
      * @param idCurso id do curso.
      * @param matriculaAluno matrícula do aluno.
      */
@@ -73,7 +75,7 @@ public class CursoService {
     }
 
     /**
-     * @return lista de cursos cadastrados na instituição no banco de dados.
+     * Busca cursos cadastrados na instituição no banco de dados.
      */
     public List<CursoDTO> getCursos(int idInstituicao) {
         return cursoRepository.getCursosByInstituicao(idInstituicao).stream()

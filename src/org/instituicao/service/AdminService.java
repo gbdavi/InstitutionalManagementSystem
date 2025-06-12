@@ -22,14 +22,14 @@ public class AdminService {
     }
 
     /**
-     * Autentica o admin cadastrado
-     * @param emailCorporativo email corporativo do admin
-     * @param senha senha do admin
-     * @return instancia do admin se autenticado com sucesso, caso contrario null
+     * Autentica o admin cadastrado.
+     * @param emailCorporativo email corporativo do admin.
+     * @param senha senha do admin.
+     * @return instancia do admin se autenticado com sucesso, caso contrario null.
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
         Optional<FuncionarioEntity> funcionario = funcionarioRepository.getFuncionarioByEmailCorporativo(emailCorporativo);
-        if (funcionario.isPresent() && funcionario.get().verificarSenha(senha) && funcionario.get() instanceof AdminEntity) {
+        if (funcionario.isPresent() && funcionario.get() instanceof AdminEntity && funcionario.get().verificarSenha(senha)) {
             return new FuncionarioDTO(funcionario.get());
         }
         return null;
@@ -42,11 +42,16 @@ public class AdminService {
      */
     public FuncionarioDTO cadastrar(FuncionarioCadastroDTO adminCadastroDTO) {
         Optional<InstituicaoEntity> instituicao = instituicaoRepository.getInstituicaoById(adminCadastroDTO.getIdInstituicao());
-        if (!instituicao.isPresent()) {
+        if (instituicao.isEmpty()) {
             return null;
         }
 
-        AdminEntity admin = new AdminEntity(adminCadastroDTO.getCpf(), adminCadastroDTO.getNome(), adminCadastroDTO.getDataNascimento(), adminCadastroDTO.getEmail(), instituicao.get());
+        AdminEntity admin = new AdminEntity(
+                adminCadastroDTO.getCpf(),
+                adminCadastroDTO.getNome(),
+                adminCadastroDTO.getDataNascimento(),
+                adminCadastroDTO.getEmail(),
+                instituicao.get());
         admin.setSenha(adminCadastroDTO.getSenha());
         instituicaoService.atribuirDadosCorporativos(instituicao.get(), admin);
 

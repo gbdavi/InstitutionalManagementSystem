@@ -26,14 +26,16 @@ public class AvaliacaoService {
     }
 
     /**
-     * Cadastra nova avaliação no banco de dados.
+     * Cadastra nova avaliação no banco de dados e cria entregas para cada aluno da turma.
      * @param avaliacaoCadastroDTO dados de cadastro da avaliação.
      * @return dados da avaliação se cadastrada com sucesso, caso contrário null.
      */
     public AvaliacaoDTO cadastrar(AvaliacaoCadastroDTO avaliacaoCadastroDTO) {
         Optional<TurmaEntity> turma = turmaRepository.getTurmaById(avaliacaoCadastroDTO.getIdTurma());
         if (turma.isPresent()) {
-            AvaliacaoEntity avaliacao = new AvaliacaoEntity(avaliacaoCadastroDTO.getDescricao(), turma.get());
+            AvaliacaoEntity avaliacao = new AvaliacaoEntity(
+                    avaliacaoCadastroDTO.getDescricao(),
+                    turma.get());
             if (avaliacaoRepository.adicionarAvaliacao(avaliacao)) {
                 for (AlunoEntity aluno : turma.get().getAlunos()) {
                     entregaRepository.adicionarEntrega(new EntregaEntity(aluno, avaliacao));
@@ -45,7 +47,7 @@ public class AvaliacaoService {
     }
 
     /**
-     * Envia a resposta do aluno para a avaliação e define como entregue.
+     * Envia a resposta do aluno para a avaliação pendente e define o status como entregue.
      * @param idAvaliacao id da avaliação.
      * @param matriculaAluno matrícula do aluno.
      * @param resposta resposta do aluno.
@@ -62,7 +64,7 @@ public class AvaliacaoService {
 
 
     /**
-     * Atribui nota para a avaliação entregue pelo aluno.
+     * Atribui nota para a entrega do aluno.
      * @param idAvaliacao id da avaliação.
      * @param matriculaAluno id do aluno.
      * @param nota nota.
@@ -77,11 +79,11 @@ public class AvaliacaoService {
     }
 
     /**
-     * Retorna as avaliações pendentes de um aluno no banco de dados.
+     * Busca avaliações pendentes de um aluno.
      */
     public List<AvaliacaoDTO> getAvaliacoesPendentesByAluno(int matriculaAluno) {
         return entregaRepository.getEntregasPendentesByAluno(matriculaAluno).stream()
-            .map(entregaEntity -> new AvaliacaoDTO(entregaEntity.getAvaliacao()))
-            .toList();
+                .map(entregaEntity -> new AvaliacaoDTO(entregaEntity.getAvaliacao()))
+                .toList();
     }
 }

@@ -13,11 +13,11 @@ public class EntregaService {
     }
 
     /**
-     * Retorna as entregas pendentes de avaliação por um professor no banco de dados.
+     * Busca entregas pendentes de avaliação por um professor.
      */
     public List<EntregaDTO> getEntregasPendentesByProfessor(int matriculaProfessor) {
         return entregaRepository.getEntregasPendentesByProfessor(matriculaProfessor).stream()
-            .map(EntregaDTO::new)
-            .toList();
+                .map(EntregaDTO::new)
+                .toList();
     }
 }
