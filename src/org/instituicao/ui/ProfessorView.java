@@ -2,9 +2,11 @@ package org.instituicao.ui;
 
 import org.instituicao.controller.InstituicaoController;
 import org.instituicao.controller.ProfessorController;
+import org.instituicao.controller.TurmaController;
 import org.instituicao.dto.FuncionarioCadastroDTO;
 import org.instituicao.dto.FuncionarioDTO;
 import org.instituicao.dto.InstituicaoDTO;
+import org.instituicao.dto.TurmaDTO;
 import org.instituicao.util.data.DataUtils;
 
 import java.util.List;
@@ -92,7 +94,8 @@ public class ProfessorView extends BaseView {
             exibirCabecalho("Selecionar ação - Professor: " + professorDTO.getMatricula());
             System.out.print(
                     "1 - Avaliar entregas"
-                + "\n2 - Voltar"
+                + "\n2 - Cadastrar avaliação"
+                + "\n3 - Voltar"
                 + "\n> "
             );
             switch (scanner.nextLine()) {
@@ -100,6 +103,9 @@ public class ProfessorView extends BaseView {
                     avaliacaoView.telaAvaliarEntrega(professorDTO.getMatricula());
                 }
                 case "2" -> {
+                    avaliacaoView.telaCadastrarAvaliacao(professorDTO.getMatricula());
+                }
+                case "3" -> {
                     return;
                 }
                 default -> exibirErro("Opção inválida.");

@@ -21,11 +21,15 @@ public class TurmaRepository {
     }
 
     public Optional<TurmaEntity> getTurmaById(int idTurma) {
-        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getId() == idTurma).findFirst();
+        return turmaEntities.stream()
+                .filter(turmaEntity -> turmaEntity.getId() == idTurma)
+                .findFirst();
     }
 
-    public List<TurmaEntity> getTurmasByAluno(int matricula) {
-        return turmaEntities.stream().filter(turmaEntity -> turmaEntity.getAlunos().stream().anyMatch(alunoEntity -> alunoEntity.getMatricula() == matricula)).toList();
+    public List<TurmaEntity> getTurmasByAluno(int matriculaAluno) {
+        return turmaEntities.stream()
+                .filter(turmaEntity -> turmaEntity.getAlunos().stream().anyMatch(alunoEntity -> alunoEntity.getMatricula() == matriculaAluno))
+                .toList();
     }
 
     public List<TurmaEntity> getTurmasDisponiveisByAluno(AlunoEntity alunoEntity) {
@@ -37,6 +41,12 @@ public class TurmaRepository {
     public List<TurmaEntity> getTurmasByInstituicao(int idInstituicao) {
         return turmaEntities.stream()
                 .filter(turmaEntity -> turmaEntity.getDisciplina().getInstituicaoEntity().getId() == idInstituicao)
+                .toList();
+    }
+
+    public List<TurmaEntity> getTurmasByProfessor(int matriculaProfessor) {
+        return turmaEntities.stream()
+                .filter(turmaEntity -> turmaEntity.getProfessores().stream().anyMatch(professorEntity -> professorEntity.getMatricula() == matriculaProfessor))
                 .toList();
     }
 }

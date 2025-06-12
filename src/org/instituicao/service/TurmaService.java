@@ -109,7 +109,16 @@ public class TurmaService {
      */
     public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
         return turmaRepository.getTurmasByInstituicao(idInstituicao).stream()
-            .map(TurmaDTO::new)
-            .toList();
+                .map(TurmaDTO::new)
+                .toList();
+    }
+
+    /**
+     * Retorna as turmas ministradas pelo professor na base de dados.
+     */
+    public List<TurmaDTO> getTurmasByProfessor(int matriculaProfessor) {
+        return turmaRepository.getTurmasByProfessor(matriculaProfessor).stream()
+                .map(TurmaDTO::new)
+                .toList();
     }
 }

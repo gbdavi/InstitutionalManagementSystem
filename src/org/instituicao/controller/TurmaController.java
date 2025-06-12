@@ -57,7 +57,7 @@ public class TurmaController {
 
     /**
      * Retorna todas as turmas na base de dados disponíveis para cadastro do aluno.
-     * Equivalente a rota /turmas (byAluno via queryParams).
+     * Equivalente a rota /turmas (disponivel, byAluno via queryParams).
      */
     public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
         return turmaService.getTurmasDisponiveisByAluno(matriculaAluno);
@@ -69,5 +69,13 @@ public class TurmaController {
      */
     public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
         return turmaService.getTurmasByInstituicao(idInstituicao);
+    }
+
+    /**
+     * Retorna as turmas ministradas pelo professor na base de dados.
+     * Equivalente a rota /turmas (byProfessor via queryParams).
+     */
+    public List<TurmaDTO> getTurmasByProfessor(int matriculaProfessor) {
+        return turmaService.getTurmasByProfessor(matriculaProfessor);
     }
 }

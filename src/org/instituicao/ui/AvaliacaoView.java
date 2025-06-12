@@ -2,25 +2,27 @@ package org.instituicao.ui;
 
 import org.instituicao.controller.AvaliacaoController;
 import org.instituicao.controller.EntregaController;
-import org.instituicao.dto.AlunoDTO;
-import org.instituicao.dto.AvaliacaoDTO;
-import org.instituicao.dto.EntregaDTO;
+import org.instituicao.controller.TurmaController;
+import org.instituicao.dto.*;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AvaliacaoView extends BaseView {
     private final AvaliacaoController avaliacaoController;
     private final EntregaController entregaController;
+    private final TurmaController turmaController;
 
     public AvaliacaoView() {
         this.avaliacaoController = new AvaliacaoController();
         this.entregaController =new EntregaController();
+        this.turmaController = new TurmaController();
     }
 
+    /**
+     * Tela para entrega de avaliação.
+     * @param matriculaAluno matrículo do aluno que irá entregar a avaliação.
+     */
     public void telaEntregarAvaliacao(int matriculaAluno) {
         try {
             exibirCabecalho("Entregar avaliação");
@@ -45,6 +47,10 @@ public class AvaliacaoView extends BaseView {
         }
     }
 
+    /**
+     * Tela para professor avaliar entrega.
+     * @param matriculaProfessor matrícula do professor que irá avaliar.
+     */
     public void telaAvaliarEntrega(int matriculaProfessor) {
         try {
             exibirCabecalho("Avaliar entregas");
@@ -59,11 +65,12 @@ public class AvaliacaoView extends BaseView {
             avaliacoesDisponiveis.forEach(System.out::println);
 
             int idAvaliacao = Integer.parseInt(solicitarCampo("\nId avaliação"));
-            if (!avaliacoesDisponiveis.stream().anyMatch(avaliacaoDTO -> avaliacaoDTO.getId() == idAvaliacao)) {
+            if (avaliacoesDisponiveis.stream().noneMatch(avaliacaoDTO -> avaliacaoDTO.getId() == idAvaliacao)) {
                 exibirErro("Avaliação inválida!");
                 return;
             }
 
+            exibirInfo("\n", "Alunos disponíveis:");
             List<AlunoDTO> alunosDisponiveis = entregasPendentes.stream()
                 .filter(entregaDTO -> entregaDTO.getAvaliacao().getId() == idAvaliacao)
                 .map(EntregaDTO::getAluno)
@@ -74,7 +81,7 @@ public class AvaliacaoView extends BaseView {
             Optional<EntregaDTO> entregaAluno = entregasPendentes.stream()
                 .filter(entregaDTO -> entregaDTO.getAluno().getMatricula() == matriculaAluno && entregaDTO.getAvaliacao().getId() == idAvaliacao)
                 .findFirst();
-            if (!entregaAluno.isPresent()) {
+            if (entregaAluno.isEmpty()) {
                 exibirErro("Aluno inválido!");
                 return;
             }
@@ -91,6 +98,44 @@ public class AvaliacaoView extends BaseView {
                 exibirInfo("Nota atribuída com sucesso.");
             } else {
                 exibirErro("Nota não pôde ser atribuída.");
+            }
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
+        }
+    }
+
+    /**
+     * Tela para professor cadastrar avaliação na turma
+     * @param matriculaProfessor matrícula do professor que fará o cadastro.
+     */
+    public void telaCadastrarAvaliacao(int matriculaProfessor) {
+        try {
+            exibirCabecalho("Cadastrar avaliação");
+
+
+            exibirInfo("\n", "Turmas disponíveis");
+            List<TurmaDTO> turmasDisponiveis = turmaController.getTurmasByProfessor(matriculaProfessor);
+            turmasDisponiveis.forEach(System.out::println);
+
+            int idTurma = Integer.parseInt(solicitarCampo("\nId turma"));
+            if (turmasDisponiveis.stream().noneMatch(avaliacaoDTO -> avaliacaoDTO.getId() == idTurma)) {
+                exibirErro("Turma inválida!");
+                return;
+            }
+
+            String descricao = solicitarCampo("Descrição");
+            if (descricao.isBlank()) {
+                exibirErro("Descrição inválida!");
+                return;
+            }
+
+            AvaliacaoCadastroDTO avaliacaoCadastroDTO = new AvaliacaoCadastroDTO(descricao, idTurma);
+            AvaliacaoDTO avaliacaoDTO = avaliacaoController.cadastrar(avaliacaoCadastroDTO);
+            if (avaliacaoDTO != null) {
+                exibirInfo("\n", "Avaliação cadastrada com sucesso.");
+                System.out.println(avaliacaoDTO);
+            } else {
+                exibirErro("Avaliação não pôde ser cadastrada.");
             }
         } catch (Exception e) {
             exibirErro("Valor inválido!");

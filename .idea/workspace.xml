@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="399a88e8-f81c-4faa-819f-0b7a4323a3b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/AlunoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/dto/PessoaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/dto/PessoaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/AlunoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/AlunoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/AlunoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/AlunoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/controller/TurmaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/repository/TurmaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/repository/TurmaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/service/TurmaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/AvaliacaoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/AvaliacaoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/instituicao/ui/ProfessorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/instituicao/ui/ProfessorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
