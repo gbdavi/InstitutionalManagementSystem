@@ -2,7 +2,7 @@ package org.instituicao.controller;
 
 import org.instituicao.dto.CursoCadastroDTO;
 import org.instituicao.dto.CursoDTO;
-import org.instituicao.repository.CursoService;
+import org.instituicao.service.CursoService;
 
 import java.util.List;
 

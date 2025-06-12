@@ -1,4 +1,4 @@
-package org.instituicao.repository;
+package org.instituicao.service;
 
 import org.instituicao.dto.CursoCadastroDTO;
 import org.instituicao.dto.CursoDTO;
@@ -6,6 +6,10 @@ import org.instituicao.entity.AlunoEntity;
 import org.instituicao.entity.CursoEntity;
 import org.instituicao.entity.DisciplinaEntity;
 import org.instituicao.entity.InstituicaoEntity;
+import org.instituicao.repository.AlunoRepository;
+import org.instituicao.repository.CursoRepository;
+import org.instituicao.repository.DisciplinaRepository;
+import org.instituicao.repository.InstituicaoRepository;
 
 import java.util.List;
 import java.util.Optional;

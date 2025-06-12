@@ -10,15 +10,17 @@ import java.util.Optional;
 public class AvaliacaoRepository {
     private static HashSet<AvaliacaoEntity> avaliacaoEntities = new HashSet<>();
 
+    /**
+     * Adiciona avaliação ao repositório local.
+     */
     public boolean adicionarAvaliacao(AvaliacaoEntity avaliacaoEntity) {
         return avaliacaoEntity != null && avaliacaoEntities.add(avaliacaoEntity);
     }
 
+    /**
+     * Remove avaliação do repositório local.
+     */
     public boolean removerAvaliacao(AvaliacaoEntity avaliacaoEntity) {
         return avaliacaoEntities.remove(avaliacaoEntity);
-    }
-
-    public Optional<AvaliacaoEntity> getAvaliacaoById(int idAvaliacao) {
-        return avaliacaoEntities.stream().filter(avaliacaoEntity -> avaliacaoEntity.getId() == idAvaliacao).findFirst();
     }
 }
