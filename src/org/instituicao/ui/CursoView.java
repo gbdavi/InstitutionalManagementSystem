@@ -16,12 +16,13 @@ public class CursoView extends BaseView {
         this.alunoController = new AlunoController();
     }
 
-
+    /**
+     * Tela para adicionar aluno ao curso no banco de dados.
+     */
     public void telaAdicionarAluno(int idInstituicao) {
         try {
             exibirCabecalho("Adicionar aluno ao curso");
-
-            exibirInfo("Cursos disponíveis:");
+            exibirInfo("\n", "Cursos disponíveis:");
             List<CursoDTO> cursosDisponiveis = cursoController.getCursos(idInstituicao);
             cursosDisponiveis.forEach(System.out::println);
 
@@ -31,7 +32,7 @@ public class CursoView extends BaseView {
                 return;
             }
 
-            exibirInfo("\nAlunos disponíveis:");
+            exibirInfo("\n", "Alunos disponíveis:");
             List<AlunoDTO> alunosDisponiveis = alunoController.getAlunos(idInstituicao);
             alunosDisponiveis.forEach(System.out::println);
 

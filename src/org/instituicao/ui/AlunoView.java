@@ -37,108 +37,8 @@ public class AlunoView extends BaseView {
     }
 
     /**
-     * Tela para cadastro de aluno na base de dados.
-     */
-    public void telaCadastro() {
-        try {
-            exibirCabecalho("Cadastrar aluno");
-
-            exibirInfo("Instituições disponíveis:");
-            List<InstituicaoDTO> instituicoesDisponiveis = instituicaoController.getInstituicoes();
-            instituicoesDisponiveis.forEach(System.out::println);
-
-            int idInstituicao = Integer.parseInt(solicitarCampo("\nId instituição"));
-            if (instituicoesDisponiveis.stream().noneMatch(instituicaoDTO -> instituicaoDTO.getId() == idInstituicao)) {
-                exibirErro("Instituição inválida!");
-                return;
-            }
-
-            AlunoCadastroDTO alunoCadastroDTO = new AlunoCadastroDTO(
-                    solicitarCampo("Cpf"),
-                    solicitarCampo("Nome"),
-                    DataUtils.processarDataNascimento(solicitarCampo("Data Nascimento (dd/MM/yyyy)")),
-                    solicitarCampo("Email"),
-                    idInstituicao,
-                    solicitarCampo("Senha")
-            );
-
-            exibirInfo("\n", "Revisar dados de cadastro.");
-            System.out.println(alunoCadastroDTO);
-
-            while (true) {
-                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
-                switch (dadosConferem) {
-                    case "SIM" -> {
-                        AlunoDTO alunoDTO = alunoController.cadastrar(alunoCadastroDTO);
-                        exibirInfo("\n", "Aluno criado com sucesso.");
-                        System.out.println(alunoDTO);
-                        return;
-                    }
-                    case "NÃO" -> {
-                        exibirInfo("Cadastro cancelado.");
-                        return;
-                    }
-                    default -> exibirErro("Valor inválido!");
-                }
-
-            }
-        } catch (Exception e) {
-            exibirErro("Valor inválido!");
-        }
-    }
-
-    /**
-     * Tela para alterar dados de aluno na base de dados.
-     */
-    public void telaAlterarDadosPessoais(AlunoDTO alunoDTO) {
-        try {
-            exibirCabecalho("Alterar dados pessoais do aluno");
-
-            exibirInfo("\n", "Deixe vazio os valores que não deseja alterar.");
-
-            String cpfInput = solicitarCampo("Cpf");
-            String cpf = !cpfInput.equals("") ? cpfInput : alunoDTO.getCpf();
-
-            String nomeInput = solicitarCampo("Nome");
-            String nome = !nomeInput.equals("") ? nomeInput : alunoDTO.getNome();
-
-            String dataNascimentoInput = solicitarCampo("Data Nascimento (dd/MM/yyyy)");
-            LocalDate dataNascimento = !dataNascimentoInput.equals("") ? DataUtils.processarDataNascimento(dataNascimentoInput) : alunoDTO.getDataNascimento();
-
-            String emailInput = solicitarCampo("Email");
-            String email = !emailInput.equals("") ? emailInput : alunoDTO.getEmail();
-
-            PessoaDTO dadosAlterados = new PessoaDTO(cpf, nome, dataNascimento, email);
-
-
-            exibirInfo("\n", "Revisar dados.");
-            System.out.println(dadosAlterados);
-
-            while (true) {
-                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
-                switch (dadosConferem) {
-                    case "SIM" -> {
-                        if (alunoController.alterarDadosPessoais(alunoDTO.getMatricula(), dadosAlterados)) {
-                            exibirInfo("Dados alterados com sucesso.");
-                        } else {
-                            exibirErro("Dados não puderam ser alterados.");
-                        }
-                        return;
-                    }
-                    case "NÃO" -> {
-                        exibirInfo("Cadastro cancelado.");
-                        return;
-                    }
-                    default -> exibirErro("Valor inválido!");
-                }
-            }
-        } catch (Exception e) {
-            exibirErro("Valor inválido!");
-        }
-    }
-
-    /**
      * Menu principal do aluno.
+     * @param alunoDTO aluno que executará as ações.
      */
     private void menuAluno(AlunoDTO alunoDTO) {
         while (true) {
@@ -162,6 +62,108 @@ public class AlunoView extends BaseView {
                 }
                 default -> exibirErro("Opção inválida.");
             }
+        }
+    }
+
+    /**
+     * Tela para cadastro de aluno no banco de dados.
+     */
+    public void telaCadastro() {
+        try {
+            exibirCabecalho("Cadastrar aluno");
+            exibirInfo("\n", "Instituições disponíveis:");
+            List<InstituicaoDTO> instituicoesDisponiveis = instituicaoController.getInstituicoes();
+            instituicoesDisponiveis.forEach(System.out::println);
+
+            int idInstituicao = Integer.parseInt(solicitarCampo("\nId instituição"));
+            if (instituicoesDisponiveis.stream().noneMatch(instituicaoDTO -> instituicaoDTO.getId() == idInstituicao)) {
+                exibirErro("Instituição inválida!");
+                return;
+            }
+
+            AlunoCadastroDTO alunoCadastroDTO = new AlunoCadastroDTO(
+                    solicitarCampo("Cpf"),
+                    solicitarCampo("Nome"),
+                    DataUtils.processarDataNascimento(solicitarCampo("Data Nascimento (dd/MM/yyyy)")),
+                    solicitarCampo("Email"),
+                    idInstituicao,
+                    solicitarCampo("Senha")
+            );
+
+            exibirInfo("\n", "Revisar dados de cadastro.");
+            System.out.println(alunoCadastroDTO);
+
+            boolean entradaValidada = false;
+            do {
+                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
+                switch (dadosConferem) {
+                    case "SIM" -> {
+                        AlunoDTO alunoDTO = alunoController.cadastrar(alunoCadastroDTO);
+                        if (alunoDTO != null) {
+                            exibirInfo("\n", "Aluno criado com sucesso.");
+                            System.out.println(alunoDTO);
+                        } else {
+                            exibirErro("\n", "Aluno não pôde ser criado.");
+                        }
+                        entradaValidada = true;
+                    }
+                    case "NÃO" -> {
+                        exibirInfo("Cadastro cancelado.");
+                        entradaValidada = true;
+                    }
+                    default -> exibirErro("Valor inválido!");
+                }
+            } while (!entradaValidada);
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
+        }
+    }
+
+    /**
+     * Tela para alterar dados de aluno no banco de dados.
+     */
+    public void telaAlterarDadosPessoais(AlunoDTO alunoDTO) {
+        try {
+            exibirCabecalho("Alterar dados pessoais do aluno");
+            exibirInfo("\n", "Deixe vazio os valores que não deseja alterar.");
+            String cpfInput = solicitarCampo("Cpf");
+            String cpf = !cpfInput.isBlank() ? cpfInput : alunoDTO.getCpf();
+
+            String nomeInput = solicitarCampo("Nome");
+            String nome = !nomeInput.isBlank() ? nomeInput : alunoDTO.getNome();
+
+            String dataNascimentoInput = solicitarCampo("Data Nascimento (dd/MM/yyyy)");
+            LocalDate dataNascimento = !dataNascimentoInput.isBlank() ? DataUtils.processarDataNascimento(dataNascimentoInput) : alunoDTO.getDataNascimento();
+
+            String emailInput = solicitarCampo("Email");
+            String email = !emailInput.isBlank() ? emailInput : alunoDTO.getEmail();
+
+            PessoaDTO dadosAlterados = new PessoaDTO(cpf, nome, dataNascimento, email);
+
+            exibirInfo("\n", "Revisar dados.");
+            System.out.println(dadosAlterados);
+
+            boolean entradaValidada = false;
+            do {
+                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
+                switch (dadosConferem) {
+                    case "SIM" -> {
+                        if (alunoController.alterarDadosPessoais(alunoDTO.getMatricula(), dadosAlterados)) {
+                            exibirInfo("Dados alterados com sucesso.");
+                        } else {
+                            exibirErro("Dados não puderam ser alterados.");
+                        }
+                        entradaValidada = true;
+                    }
+                    case "NÃO" -> {
+                        exibirInfo("Cadastro cancelado.");
+                        entradaValidada = true;
+                    }
+                    default -> exibirErro("Valor inválido!");
+                }
+            } while (!entradaValidada);
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
         }
     }
 

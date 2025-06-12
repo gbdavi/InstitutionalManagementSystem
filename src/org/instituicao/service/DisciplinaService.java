@@ -19,7 +19,7 @@ public class DisciplinaService {
     }
 
     /**
-     * Cadastra nova disciplina na base de dados.
+     * Cadastra nova disciplina no banco de dados.
      * @param disciplinaCadastroDTO dados da disciplina.
      * @return dados da disciplina se cadastrada com sucesso, caso contrário null.
      */

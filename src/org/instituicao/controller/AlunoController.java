@@ -31,7 +31,7 @@ public class AlunoController {
     }
 
     /**
-     * Cadastra novo aluno na base de dados.
+     * Cadastra novo aluno no banco de dados.
      * Equivalente a rota /alunos/cadastrar.
      * @param alunoCadastroDTO dados de cadastro do aluno.
      * @return dados do aluno se cadastrado com sucesso, caso contrário null.
@@ -51,7 +51,7 @@ public class AlunoController {
     }
 
     /**
-     * Retorna todos os alunos da instituicao cadastrados na base de dados.
+     * Retorna todos os alunos da instituicao cadastrados no banco de dados.
      * Equivalente a rota /alunos.
      */
     public List<AlunoDTO> getAlunos(int idInstituicao) {
@@ -69,7 +69,7 @@ public class AlunoController {
     }
 
     /**
-     * Retorna dados do aluno cadastrado na base de dados.
+     * Retorna dados do aluno cadastrado no banco de dados.
      * Equivalente a rota /alunos/{matriculaAluno}
      * @param matriculaAluno matrícula do aluno.
      */

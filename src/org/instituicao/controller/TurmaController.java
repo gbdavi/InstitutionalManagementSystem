@@ -15,7 +15,7 @@ public class TurmaController {
     }
 
     /**
-     * Cadastra nova turma na base de dados.
+     * Cadastra nova turma no banco de dados.
      * Equivalente a rota /turmas/cadastrar.
      * @param turmaCadastroDTO dados de cadastro da turma.
      * @return dados da turma se cadastrada com sucesso, caso contrário null.
@@ -56,7 +56,7 @@ public class TurmaController {
     }
 
     /**
-     * Retorna todas as turmas na base de dados disponíveis para cadastro do aluno.
+     * Retorna todas as turmas no banco de dados disponíveis para cadastro do aluno.
      * Equivalente a rota /turmas (disponivel, byAluno via queryParams).
      */
     public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
@@ -64,7 +64,7 @@ public class TurmaController {
     }
 
     /**
-     * Retorna todas as turmas da instituição da base de dados.
+     * Retorna todas as turmas da instituição no banco de dados.
      * Equivalente a rota /turmas (byInstituicao via queryParams).
      */
     public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
@@ -72,7 +72,7 @@ public class TurmaController {
     }
 
     /**
-     * Retorna as turmas ministradas pelo professor na base de dados.
+     * Retorna as turmas ministradas pelo professor no banco de dados.
      * Equivalente a rota /turmas (byProfessor via queryParams).
      */
     public List<TurmaDTO> getTurmasByProfessor(int matriculaProfessor) {

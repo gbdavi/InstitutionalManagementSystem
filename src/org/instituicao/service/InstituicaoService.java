@@ -21,7 +21,7 @@ public class InstituicaoService {
     }
 
     /**
-     * Cadastra nova instituição na base de dados.
+     * Cadastra nova instituição no banco de dados.
      * @param instituicaoCadastroDTO dados de cadastro da instituição.
      * @return dados da instituição se cadastrada com sucesso, caso contrário null.
      */

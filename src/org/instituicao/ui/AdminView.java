@@ -36,14 +36,18 @@ public class AdminView extends BaseView {
                 solicitarCampo("Senha"));
         if (admin != null) {
             System.out.println("\nBem vindo(a) " + admin.getNome() + "!");
-            telaAcoes(admin);
+            menuAdmin(admin);
 
         } else {
             exibirErro("Credenciais inválidas.");
         }
     }
 
-    public void telaAcoes(FuncionarioDTO adminDTO) {
+    /**
+     * Menu principal do admin.
+     * @param adminDTO admin que executará as ações.
+     */
+    public void menuAdmin(FuncionarioDTO adminDTO) {
         while (true) {
             exibirCabecalho("Selecionar ação - Admin: " + adminDTO.getMatricula());
             System.out.print(

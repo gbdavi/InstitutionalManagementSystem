@@ -29,7 +29,7 @@ public class AdminController {
     }
 
     /**
-     * Cadastra novo admin na base de dados.
+     * Cadastra novo admin no banco de dados.
      * Equivalente a rota /admins/cadastrar.
      * @param adminCadastroDTO dados de cadastro do admin.
      * @return dados do admin se cadastrado com sucesso, caso contrário null.

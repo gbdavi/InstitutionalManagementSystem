@@ -26,7 +26,7 @@ public class AvaliacaoService {
     }
 
     /**
-     * Cadastra nova avaliação na base de dados.
+     * Cadastra nova avaliação no banco de dados.
      * @param avaliacaoCadastroDTO dados de cadastro da avaliação.
      * @return dados da avaliação se cadastrada com sucesso, caso contrário null.
      */
@@ -77,7 +77,7 @@ public class AvaliacaoService {
     }
 
     /**
-     * Retorna as avaliações pendentes de um aluno na base de dados.
+     * Retorna as avaliações pendentes de um aluno no banco de dados.
      */
     public List<AvaliacaoDTO> getAvaliacoesPendentesByAluno(int matriculaAluno) {
         return entregaRepository.getEntregasPendentesByAluno(matriculaAluno).stream()

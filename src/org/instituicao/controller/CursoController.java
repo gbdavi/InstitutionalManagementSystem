@@ -14,7 +14,7 @@ public class CursoController {
     }
 
     /**
-     * Cadastra novo curso na base de dados.
+     * Cadastra novo curso no banco de dados.
      * Equivalente a rota /cursos/cadastrar.
      * @param cursoCadastroDTO dados de cadastro do curso.
      * @return dados do curso se cadastrado com sucesso, caso contrário null.
@@ -44,7 +44,7 @@ public class CursoController {
     }
 
     /**
-     * Retorna todos os cursos da instituicao cadastrados na base de dados.
+     * Retorna todos os cursos da instituicao cadastrados no banco de dados.
      * Equivalente a rota /cursos.
      */
     public List<CursoDTO> getCursos(int idInstituicao) {

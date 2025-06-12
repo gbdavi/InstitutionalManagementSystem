@@ -24,7 +24,7 @@ public class CursoService {
     }
 
     /**
-     * Cadastra novo curso na base de dados.
+     * Cadastra novo curso no banco de dados.
      * @param cursoCadastroDTO dados do curso.
      * @return dados do curso se cadastrado com sucesso, caso contrário null.
      */

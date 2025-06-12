@@ -21,11 +21,13 @@ public class TurmaView extends BaseView {
         this.professorController = new ProfessorController();
     }
 
+    /**
+     * Tela para adicionar aluno na turma no banco de dados.
+     */
     public void telaAdicionarAluno(int idInstituicao) {
         try {
             exibirCabecalho("Adicionar aluno na turma");
-
-            exibirInfo("Alunos disponíveis:");
+            exibirInfo("\n", "Alunos disponíveis:");
             List<AlunoDTO> alunosDisponiveis = alunoController.getAlunos(idInstituicao);
             alunosDisponiveis.forEach(System.out::println);
 
@@ -55,11 +57,14 @@ public class TurmaView extends BaseView {
         }
     }
 
+
+    /**
+     * Tela para adicionar professor para ministrar turma no banco de dados.
+     */
     public void telaAdicionarProfessor(int idInstituicao) {
         try {
             exibirCabecalho("Adicionar professor na turma");
-
-            exibirInfo("Professores disponíveis:");
+            exibirInfo("\n", "Professores disponíveis:");
             List<FuncionarioDTO> professoresDisponiveis = professorController.getProfessores(idInstituicao);
             professoresDisponiveis.forEach(System.out::println);
 
@@ -89,10 +94,12 @@ public class TurmaView extends BaseView {
         }
     }
 
+    /**
+     * Tela para alterar status da turma no banco de dados.
+     */
     public void telaAlterarStatus(int idInstituicao) {
         try {
             exibirCabecalho("Alterar status da turma");
-
             exibirInfo("\n", "Turmas disponíveis:");
             List<TurmaDTO> turmasDisponiveis = turmaController.getTurmasByInstituicao(idInstituicao);
             turmasDisponiveis.forEach(System.out::println);

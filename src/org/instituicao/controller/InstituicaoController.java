@@ -18,7 +18,7 @@ public class InstituicaoController {
     }
 
     /**
-     * Cadastra nova instituição na base de dados.
+     * Cadastra nova instituição no banco de dados.
      * Equivalente a rota /instituicoes/cadastrar.
      * @param instituicaoCadastroDTO dados de cadastro da instituição.
      * @return dados da instituição se cadastrada com sucesso, caso contrário null.
@@ -28,7 +28,7 @@ public class InstituicaoController {
     }
 
     /**
-     * Retorna todas as instituições cadastradas na base de dados.
+     * Retorna todas as instituições cadastradas no banco de dados.
      * Equivalente a rota /instituicoes.
      */
     public List<InstituicaoDTO> getInstituicoes() {

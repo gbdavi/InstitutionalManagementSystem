@@ -12,7 +12,7 @@ public class DisciplinaController {
     }
 
     /**
-     * Cadastra nova disciplina na base de dados.
+     * Cadastra nova disciplina no banco de dados.
      * Equivalente a rota /disciplinas/cadastrar.
      * @param disciplinaCadastroDTO dados de cadastro da disciplina.
      * @return dados da disciplina se cadastrada com sucesso, caso contrário null.

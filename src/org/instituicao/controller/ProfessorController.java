@@ -31,7 +31,7 @@ public class ProfessorController {
     }
 
     /**
-     * Cadastra novo professor na base de dados.
+     * Cadastra novo professor no banco de dados.
      * Equivalente a rota /professores/cadastrar.
      * @param professorCadastroDTO dados de cadastro do professor.
      * @return dados do professor se cadastrado com sucesso, caso contrário null.
@@ -41,7 +41,7 @@ public class ProfessorController {
     }
 
     /**
-     * Retorna todos os professores da instituicao cadastrados na base de dados.
+     * Retorna todos os professores da instituicao cadastrados no banco de dados.
      * Equivalente a rota /professores.
      */
     public List<FuncionarioDTO> getProfessores(int idInstituicao) {

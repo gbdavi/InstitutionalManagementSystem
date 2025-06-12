@@ -36,7 +36,7 @@ public class AdminService {
     }
 
     /**
-     * Cadastra novo admin na base de dados.
+     * Cadastra novo admin no banco de dados.
      * @param adminCadastroDTO dados do admin.
      * @return dados do admin se cadastrado com sucesso, caso contrário null.
      */

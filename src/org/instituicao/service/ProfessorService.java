@@ -37,7 +37,7 @@ public class ProfessorService {
     }
 
     /**
-     * Cadastra novo professor na base de dados.
+     * Cadastra novo professor no banco de dados.
      * @param professorCadastroDTO dados do professor.
      * @return dados do professor se cadastrado com sucesso, caso contrário null.
      */
@@ -58,7 +58,7 @@ public class ProfessorService {
     }
 
     /**
-     * Retorna todos os professores da instituicao cadastrados na base de dados.
+     * Retorna todos os professores da instituicao cadastrados no banco de dados.
      */
     public List<FuncionarioDTO> getProfessores(int idInstituicao) {
         return funcionarioRepository.getFuncionarioByInstituicao(idInstituicao).stream()

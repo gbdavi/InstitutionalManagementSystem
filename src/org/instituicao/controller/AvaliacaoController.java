@@ -14,7 +14,7 @@ public class AvaliacaoController {
     }
 
     /**
-     * Cadastra nova avaliação na base de dados.
+     * Cadastra nova avaliação no banco de dados.
      * Equivalente a rota /avaliacoes/cadastrar.
      * @param avaliacaoCadastroDTO dados de cadastro da avaliação.
      * @return dados da avaliação se cadastrada com sucesso, caso contrário null.
@@ -46,7 +46,7 @@ public class AvaliacaoController {
     }
 
     /**
-     * Retorna as avaliações pendentes de um aluno na base de dados.
+     * Retorna as avaliações pendentes de um aluno no banco de dados.
      * Equivalente a rota /avaliacoes (byAluno e pendente via queryParams).
      */
     public List<AvaliacaoDTO> getAvaliacoesPendentesByAluno(int matriculaAluno) {

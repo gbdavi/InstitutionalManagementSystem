@@ -39,56 +39,9 @@ public class ProfessorView extends BaseView {
     }
 
     /**
-     * Tela para cadastro de professor na base de dados.
+     * Menu principal do professor.
+     * @param professorDTO professor que executará as ações.
      */
-    public void telaCadastro() {
-        try {
-            exibirCabecalho("Cadastrar professor");
-
-            exibirInfo("Instituições disponíveis:");
-            List<InstituicaoDTO> instituicoesDisponiveis = instituicaoController.getInstituicoes();
-            instituicoesDisponiveis.forEach(System.out::println);
-
-            int idInstituicao = Integer.parseInt(solicitarCampo("\nId instituição"));
-            if (instituicoesDisponiveis.stream().noneMatch(instituicaoDTO -> instituicaoDTO.getId() == idInstituicao)) {
-                exibirErro("Instituição inválida!");
-                return;
-            }
-
-            FuncionarioCadastroDTO professorCadastroDTO = new FuncionarioCadastroDTO(
-                    solicitarCampo("Cpf"),
-                    solicitarCampo("Nome"),
-                    DataUtils.processarDataNascimento(solicitarCampo("Data Nascimento (dd/MM/yyyy)")),
-                    solicitarCampo("Email"),
-                    idInstituicao,
-                    solicitarCampo("Senha")
-            );
-
-            exibirInfo("\n", "Revisar dados de cadastro.");
-            System.out.println(professorCadastroDTO);
-
-            while (true) {
-                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
-                switch (dadosConferem) {
-                    case "SIM" -> {
-                        FuncionarioDTO professorDTO = professorController.cadastrar(professorCadastroDTO);
-                        exibirInfo("\n", "Professor criado com sucesso.");
-                        System.out.println(professorDTO);
-                        return;
-                    }
-                    case "NÃO" -> {
-                        exibirInfo("Cadastro cancelado.");
-                        return;
-                    }
-                    default -> exibirErro("Valor inválido!");
-                }
-
-            }
-        } catch (Exception e) {
-            exibirErro("Valor inválido!");
-        }
-    }
-
     private void menuProfessor(FuncionarioDTO professorDTO) {
         while (true) {
             exibirCabecalho("Selecionar ação - Professor: " + professorDTO.getMatricula());
@@ -110,6 +63,56 @@ public class ProfessorView extends BaseView {
                 }
                 default -> exibirErro("Opção inválida.");
             }
+        }
+    }
+
+    /**
+     * Tela para cadastro de professor no banco de dados.
+     */
+    public void telaCadastro() {
+        try {
+            exibirCabecalho("Cadastrar professor");
+            exibirInfo("\n", "Instituições disponíveis:");
+            List<InstituicaoDTO> instituicoesDisponiveis = instituicaoController.getInstituicoes();
+            instituicoesDisponiveis.forEach(System.out::println);
+
+            int idInstituicao = Integer.parseInt(solicitarCampo("\nId instituição"));
+            if (instituicoesDisponiveis.stream().noneMatch(instituicaoDTO -> instituicaoDTO.getId() == idInstituicao)) {
+                exibirErro("Instituição inválida!");
+                return;
+            }
+
+            FuncionarioCadastroDTO professorCadastroDTO = new FuncionarioCadastroDTO(
+                    solicitarCampo("Cpf"),
+                    solicitarCampo("Nome"),
+                    DataUtils.processarDataNascimento(solicitarCampo("Data Nascimento (dd/MM/yyyy)")),
+                    solicitarCampo("Email"),
+                    idInstituicao,
+                    solicitarCampo("Senha")
+            );
+
+            exibirInfo("\n", "Revisar dados de cadastro.");
+            System.out.println(professorCadastroDTO);
+
+            boolean entradaValida = false;
+            do {
+                String dadosConferem = solicitarCampo("\nDados conferem (Sim/Não)").toUpperCase();
+                switch (dadosConferem) {
+                    case "SIM" -> {
+                        FuncionarioDTO professorDTO = professorController.cadastrar(professorCadastroDTO);
+                        exibirInfo("\n", "Professor criado com sucesso.");
+                        System.out.println(professorDTO);
+                        entradaValida = true;
+                    }
+                    case "NÃO" -> {
+                        exibirInfo("Cadastro cancelado.");
+                        entradaValida = true;
+                    }
+                    default -> exibirErro("Valor inválido!");
+                }
+            } while (!entradaValida);
+        } catch (Exception e) {
+            exibirErro("Valor inválido!");
         }
     }
 }

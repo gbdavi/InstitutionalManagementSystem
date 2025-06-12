@@ -42,8 +42,12 @@ public abstract class BaseView {
         exibirErro("", erro);
     }
 
+    /**
+     * Solicita linha de texto para usuário.
+     * @param nomeCampo nome exibido ao solicitar dado.
+     */
     public String solicitarCampo(String nomeCampo) {
         System.out.print(nomeCampo + ": ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 }

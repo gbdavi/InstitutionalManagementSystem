@@ -25,7 +25,7 @@ public class TurmaService {
     }
 
     /**
-     * Cadastra nova turma na base de dados.
+     * Cadastra nova turma no banco de dados.
      * @param turmaCadastroDTO dados da turma.
      * @return dados da turma se cadastrada com sucesso, caso contrário null.
      */
@@ -92,7 +92,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna todas as turmas na base de dados disponíveis para cadastro do aluno.
+     * Retorna todas as turmas no banco de dados disponíveis para cadastro do aluno.
      */
     public List<TurmaDTO> getTurmasDisponiveisByAluno(int matriculaAluno) {
         Optional<AlunoEntity> aluno = alunoRepository.getAlunoByMatricula(matriculaAluno);
@@ -105,7 +105,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna todas as turmas da instituição da base de dados.
+     * Retorna todas as turmas da instituição no banco de dados.
      */
     public List<TurmaDTO> getTurmasByInstituicao(int idInstituicao) {
         return turmaRepository.getTurmasByInstituicao(idInstituicao).stream()
@@ -114,7 +114,7 @@ public class TurmaService {
     }
 
     /**
-     * Retorna as turmas ministradas pelo professor na base de dados.
+     * Retorna as turmas ministradas pelo professor no banco de dados.
      */
     public List<TurmaDTO> getTurmasByProfessor(int matriculaProfessor) {
         return turmaRepository.getTurmasByProfessor(matriculaProfessor).stream()

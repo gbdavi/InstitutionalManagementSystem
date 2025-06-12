@@ -13,7 +13,7 @@ public class EntregaService {
     }
 
     /**
-     * Retorna as entregas pendentes de avaliação por um professor na base de dados.
+     * Retorna as entregas pendentes de avaliação por um professor no banco de dados.
      */
     public List<EntregaDTO> getEntregasPendentesByProfessor(int matriculaProfessor) {
         return entregaRepository.getEntregasPendentesByProfessor(matriculaProfessor).stream()

@@ -40,7 +40,7 @@ public class AlunoService {
     }
 
     /**
-     * Cadastra novo aluno na base de dados.
+     * Cadastra novo aluno no banco de dados.
      * @param alunoCadastroDTO dados do aluno.
      * @return dados do aluno se cadastrado com sucesso, caso contrário null.
      */
@@ -139,7 +139,7 @@ public class AlunoService {
     }
 
     /**
-     * Retorna dados do aluno cadastrado na base de dados.
+     * Retorna dados do aluno cadastrado no banco de dados.
      * @param matriculaAluno matrícula do aluno.
      */
     public AlunoDTO getAluno(int matriculaAluno) {

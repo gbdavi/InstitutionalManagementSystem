@@ -14,7 +14,7 @@ public class EntregaController {
     }
 
     /**
-     * Retorna as entregas pendentes de avaliação por um professor na base de dados.
+     * Retorna as entregas pendentes de avaliação por um professor no banco de dados.
      * Equivalente a rota /entregas (byProfessor e pendente via queryParams).
      */
     public List<EntregaDTO> getEntregasPendentesByProfessor(int matriculaProfessor) {

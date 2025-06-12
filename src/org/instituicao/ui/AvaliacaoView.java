@@ -21,7 +21,7 @@ public class AvaliacaoView extends BaseView {
 
     /**
      * Tela para entrega de avaliação.
-     * @param matriculaAluno matrículo do aluno que irá entregar a avaliação.
+     * @param matriculaAluno matrícula do aluno que irá entregar a avaliação.
      */
     public void telaEntregarAvaliacao(int matriculaAluno) {
         try {
@@ -54,14 +54,13 @@ public class AvaliacaoView extends BaseView {
     public void telaAvaliarEntrega(int matriculaProfessor) {
         try {
             exibirCabecalho("Avaliar entregas");
-
             exibirInfo("\n", "Avaliações disponíveis:");
             List<EntregaDTO> entregasPendentes = entregaController.getEntregasPendentesByProfessor(matriculaProfessor);
             List<AvaliacaoDTO> avaliacoesDisponiveis = entregasPendentes.stream()
-                .map(EntregaDTO::getAvaliacao)
-                .collect(Collectors.toCollection(HashSet::new)).stream()
-                .sorted(Comparator.comparing(AvaliacaoDTO::getDescricao))
-                .toList();
+                    .map(EntregaDTO::getAvaliacao)
+                    .collect(Collectors.toCollection(HashSet::new)).stream()
+                    .sorted(Comparator.comparing(AvaliacaoDTO::getDescricao))
+                    .toList();
             avaliacoesDisponiveis.forEach(System.out::println);
 
             int idAvaliacao = Integer.parseInt(solicitarCampo("\nId avaliação"));
@@ -72,15 +71,15 @@ public class AvaliacaoView extends BaseView {
 
             exibirInfo("\n", "Alunos disponíveis:");
             List<AlunoDTO> alunosDisponiveis = entregasPendentes.stream()
-                .filter(entregaDTO -> entregaDTO.getAvaliacao().getId() == idAvaliacao)
-                .map(EntregaDTO::getAluno)
-                .toList();
+                    .filter(entregaDTO -> entregaDTO.getAvaliacao().getId() == idAvaliacao)
+                    .map(EntregaDTO::getAluno)
+                    .toList();
             alunosDisponiveis.forEach(System.out::println);
 
             int matriculaAluno = Integer.parseInt(solicitarCampo("\nMatrícula aluno"));
             Optional<EntregaDTO> entregaAluno = entregasPendentes.stream()
-                .filter(entregaDTO -> entregaDTO.getAluno().getMatricula() == matriculaAluno && entregaDTO.getAvaliacao().getId() == idAvaliacao)
-                .findFirst();
+                    .filter(entregaDTO -> entregaDTO.getAluno().getMatricula() == matriculaAluno && entregaDTO.getAvaliacao().getId() == idAvaliacao)
+                    .findFirst();
             if (entregaAluno.isEmpty()) {
                 exibirErro("Aluno inválido!");
                 return;
@@ -111,8 +110,6 @@ public class AvaliacaoView extends BaseView {
     public void telaCadastrarAvaliacao(int matriculaProfessor) {
         try {
             exibirCabecalho("Cadastrar avaliação");
-
-
             exibirInfo("\n", "Turmas disponíveis");
             List<TurmaDTO> turmasDisponiveis = turmaController.getTurmasByProfessor(matriculaProfessor);
             turmasDisponiveis.forEach(System.out::println);
