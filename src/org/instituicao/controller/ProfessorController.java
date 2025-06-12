@@ -24,7 +24,7 @@ public class ProfessorController {
      * @param senha senha do professor.
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
-        if (emailCorporativo == null || senha == null || emailCorporativo.length() == 0 || senha.length() == 0) {
+        if (emailCorporativo == null || senha == null || emailCorporativo.isBlank() || senha.isBlank()) {
             return null;
         }
         return professorService.login(emailCorporativo, senha);

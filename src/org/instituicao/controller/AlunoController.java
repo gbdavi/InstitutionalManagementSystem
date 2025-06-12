@@ -10,7 +10,6 @@ import java.util.List;
  * Equivalente a rota base /alunos
  */
 public class AlunoController {
-
     private final AlunoService alunoService;
 
     public AlunoController() {
@@ -24,7 +23,7 @@ public class AlunoController {
      * @param senha senha do aluno.
      */
     public AlunoDTO login(String emailAcademico, String senha) {
-        if (emailAcademico == null || senha == null || emailAcademico.length() == 0 || senha.length() == 0) {
+        if (emailAcademico == null || senha == null || emailAcademico.isBlank() || senha.isBlank()) {
             return null;
         }
         return alunoService.login(emailAcademico, senha);

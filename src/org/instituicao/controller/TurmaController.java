@@ -49,7 +49,6 @@ public class TurmaController {
      * Equivalente a rota /turmas/{idTurma}/alterar-status.
      * @param idTurma id da turma.
      * @param statusTurma novo status.
-     * @return
      */
     public boolean alterarStatus(int idTurma, StatusTurma statusTurma) {
         return turmaService.alterarStatus(idTurma, statusTurma);

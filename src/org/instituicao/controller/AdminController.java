@@ -22,7 +22,7 @@ public class AdminController {
      * @param senha senha do admin.
      */
     public FuncionarioDTO login(String emailCorporativo, String senha) {
-        if (emailCorporativo == null || senha == null || emailCorporativo.length() == 0 || senha.length() == 0) {
+        if (emailCorporativo == null || senha == null || emailCorporativo.isBlank() || senha.isBlank()) {
             return null;
         }
         return adminService.login(emailCorporativo, senha);
