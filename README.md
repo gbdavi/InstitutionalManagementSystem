@@ -7,7 +7,7 @@
 
 ## 📌 Descrição do Projeto
 
-Este projeto foi desenvolvido individualmente como parte da disciplina de **Programação de Soluções Computacionais** no curso de graduação em `Banco de Dados: Data Science, Big Data & BI`, com o objetivo de criar uma aplicação em Java capaz de **cadastrar, organizar e analisar o desempenho acadêmico de alunos**.
+Este projeto foi desenvolvido individualmente como parte da disciplina de **Programação de Soluções Computacionais** no curso de graduação em `Banco de Dados: Data Science, Big Data & BI`, com o objetivo de criar uma aplicação em Java capaz de **cadastrar, organizar e analisar o desempenho acadêmico de alunos**, conforme [escopo](/docs/Escopo.pdf).
 
 Mais do que um simples sistema de cadastro, o projeto foi estruturado de forma **modular e expansível**, pensando em futuras integrações como:
 
@@ -84,7 +84,8 @@ src/
 
 ## 📄 Documentação Técnica
 
-A lógica foi construída com foco em expansão futura. Já é possível:
+
+A lógica foi construída com foco em expansão futura, explicada com mais detalhes na [documentação](/docs/DocumentacaoProjeto.pdf). Já é possível:
 
 * Reutilizar os controladores para expor endpoints REST
 * Substituir o repositório atual por um banco de dados real com mínimo impacto
